@@ -1,4 +1,5 @@
 import {Application, ChannelService, RemoterClass, FrontendSession} from 'pinus';
+import { MainScene } from '../drive/MainScene';
 
 
 export default function (app: Application) {
@@ -19,6 +20,8 @@ export class SceneRemote {
     constructor(private app: Application) {
         this.app = app;
         this.channelService = app.get('channelService');
+        let channel = this.channelService.getChannel('MainScene', true);
+        MainScene.getInstance().set_channel(this.channelService,channel);
     }
 
     private channelService: ChannelService;
@@ -44,7 +47,8 @@ export class SceneRemote {
             channel.add(uid, sid);
         }
 
-        return this.get(name, flag);
+        let user_info = MainScene.getInstance().enter_game(username);
+        return user_info;
     }
 
     /**
@@ -83,6 +87,7 @@ export class SceneRemote {
         let param = {
             user: username
         };
+        MainScene.getInstance().leave_game(username);
         channel.pushMessage('onLeave', param);
     }
 }
