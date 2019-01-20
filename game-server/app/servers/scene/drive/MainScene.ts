@@ -12,7 +12,7 @@ export interface PTerm {//项
 /*
     场景驱动
 */
-export class MainScene implements Target {
+export class MainScene extends Target {
 
     private static _instance:MainScene = null;//场景单例
 
@@ -30,6 +30,7 @@ export class MainScene implements Target {
     private _channel: Channel;
 
     constructor() {
+        super();
         this.name = "绝地求生";
         this._tick_timer = setInterval(this.tick.bind(this),1000/60); // 游戏世界刷新时间为1/60秒每帧
         for (let i = 0; i < 500; i++) {
