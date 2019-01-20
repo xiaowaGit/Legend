@@ -1,4 +1,3 @@
-import {Effect} from './Effect'
 import {Point} from './Point'
 import { Target } from './Target';
 import { MainScene, PTerm } from '../drive/MainScene';
@@ -14,8 +13,8 @@ export abstract class Actor extends Target {
     public point:Point = null;
     private _speed:number = 500;//玩家移动速度
 
-    private _scene:MainScene = null;
-    private _pactor: PActor = null;
+    protected _scene:MainScene = null;
+    protected _pactor: PActor = null;
 
     constructor(name:string,map_w:number,map_h:number,scene:MainScene,pactor:PActor) {
         super();
@@ -40,6 +39,16 @@ export abstract class Actor extends Target {
         term.player = this._pactor;
     }
 
+    public out():void { ///从地图中跳出
+        let term_map:PTerm[][] = this._scene.term_map;
+        if (this._pactor.prev) this._pactor.prev.next = this._pactor.next;
+        if (this._pactor.next) this._pactor.next.prev = this._pactor.prev;
+        if (!this._pactor.prev) {
+            let term:PTerm = term_map[this.point.x][this.point.y];
+            term.player = this._pactor.next;
+        }
+    }
+
     public get speed():number {
         return this._speed;
     }
@@ -62,4 +71,7 @@ export abstract class Actor extends Target {
     public getTarget():Actor[] {
         return [this]
     }
+    
+    abstract notice_all_player(onType:string,body:Object):void;
+    abstract notice_one_player(onType:string,body:Object):void;
 }

@@ -3,6 +3,7 @@ import { Actor } from "../base/Actor";
 import { ChannelService, Channel } from "pinus";
 import { PActor } from "../base/PActor";
 import { PRes } from "../base/PRes";
+import { Player } from "../base/Player";
 
 export interface PTerm {//项
     player:PActor;
@@ -22,6 +23,7 @@ export class MainScene extends Target {
     }
 
     public name:string = null;
+    private _actors_dic:{} = {};
     private _actors:Actor[] = [];
     public grid_map:number[][] = [];
     public term_map:PTerm[][] = [];
@@ -44,15 +46,40 @@ export class MainScene extends Target {
     }
 
     private tick():void {
-        
+        this.execute_effect();
+        this.manager_res();
+    }
+    private manager_res():void {////管理地图资源，生成和销毁吃鸡装备
+
+    }
+    ////执行游戏世界中的各种效果
+    private execute_effect():void {
+        this._actors.forEach(element => {///所有角色的效果
+            element.run();
+        });
+        this.run();///全局效果
     }
     ///进入游戏世界
     public enter_game(user_name):void {
-
+        let pactor:PActor = {prev:null,next:null,player:null};
+        let player:Player = new Player(user_name,this.grid_map[0].length,
+            this.grid_map.length,this,pactor);
+        pactor.player = player;
+        player.move_to(player.point);
+        this._actors.push(player);
+        this._actors_dic[user_name] = player;
+        this.notice_all_player("onCreate",player);
     }
     ///离开游戏世界
     public leave_game(user_name):void {
-
+        let player:Player = this._actors_dic[user_name];
+        if (player) {
+            player.out();//离开地图
+            let index:number = this._actors.indexOf(player);
+            this._actors.splice(index,1);
+            this._actors_dic[user_name] = null;
+            this.notice_all_player("onDelete",player);
+        }
     }
 
     set_channel(channelService: ChannelService, channel: Channel):void {

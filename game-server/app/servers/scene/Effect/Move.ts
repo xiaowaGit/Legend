@@ -55,12 +55,12 @@ export class Move implements Effect {
             let speed = this._player.getTickSpeed();
             this._speed = speed;
             this._tick = 0;
+            this._player.notice_all_player("onMove",{path:path,speed:speed,target:this._player.name});
         }else{
             this._tick++;
             if(this._tick >= this._speed) {
                 this._tick = 0;
-                this._ppath++;
-                if(this._ppath >= this._path.length){
+                if(!this._path || this._ppath >= this._path.length){
                     this._is_end = true;
                     this._is_run = false;
                     return
@@ -68,6 +68,7 @@ export class Move implements Effect {
                     let pot:Point = this._path[this._ppath];
                     this._player.move_to(pot);
                 }
+                this._ppath++;
             }
         }
     }
@@ -77,5 +78,6 @@ export class Move implements Effect {
     kill():void {//强制kill运行中的效果
         this._is_end = true;
         this._is_run = false;
+        this._pathFind = null;
     }
 }
