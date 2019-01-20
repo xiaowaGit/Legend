@@ -6,6 +6,7 @@ import { PRes } from "../base/PRes";
 import { Player } from "../base/Player";
 import { Point } from "../base/Point";
 import { Move } from "../Effect/Move";
+import { Effect } from "../base/Effect";
 
 export interface PTerm {//项
     player:PActor;
@@ -138,6 +139,12 @@ export class MainScene extends Target {
     private handler_move_to(body:{pot:Point,target:string}):void {
         let player:Player = this._actors_dic[body.target];
         if (player) {
+            let effect_stack:Effect[] = player.getEffectStack();
+            effect_stack.forEach(element => {
+                if (element.getName() == "Move") {
+                    element.kill();
+                }
+            });
             let move:Move = new Move(body.pot,this.grid_map,player);
             player.pushEffect(move);
         }
