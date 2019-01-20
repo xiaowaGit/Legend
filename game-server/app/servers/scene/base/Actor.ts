@@ -8,8 +8,14 @@ import { PActor } from './PActor';
 export abstract class Actor extends Target {
 
     public name:string = null;//玩家姓名
-    public blood:number = 0;//气血
-    public magic:number = 0;//魔法
+    private _blood: number = 0;//气血
+    private _blood_limit:number = 1000;//气血上限
+    private _magic: number = 0;//魔法
+    private _magic_limit:number = 1000;//魔法上限
+    private _physics_attack: number = 100;//物理攻击
+    private _magic_attack: number = 100;//魔法攻击
+    private _physics_defense: number = 50;//物理防御
+    private _magic_defense: number = 50;//魔法防御
     public point:Point = null;
     private _speed:number = 500;//玩家移动速度
 
@@ -48,7 +54,7 @@ export abstract class Actor extends Target {
             term.player = this._pactor.next;
         }
     }
-
+    ///// 移动速度
     public get speed():number {
         return this._speed;
     }
@@ -62,7 +68,78 @@ export abstract class Actor extends Target {
             this._speed = value;
         }
     }
+    /////气血
+    public get blood(): number {
+        return this._blood;
+    }
+    public set blood(value: number) {
+        if(value > this._blood_limit) this._blood = this._blood_limit;
+        else if (value < 0) this._blood = 0;
+        else this._blood = value;
+    }
+    /////气血上限
+    public get blood_limit():number {
+        return this._blood_limit;
+    }
 
+    public set blood_limit(value:number) {
+        if (value < 1000) this._blood_limit = 1000;
+        else this._blood_limit = value;
+    }
+    //////魔法
+    public get magic(): number {
+        return this._magic;
+    }
+    public set magic(value: number) {
+        if(value > this._magic_limit) this._magic = this._magic_limit;
+        else if (value < 0) this._magic = 0;
+        else this._magic = value;
+    }
+    ///////魔法上限
+    public get magic_limit():number {
+        return this._magic_limit;
+    }
+
+    public set magic_limit(value:number) {
+        if (value < 1000) this._magic_limit = 1000;
+        else this._magic_limit = value;
+    }
+    //////物理攻击
+    public get physics_attack(): number {
+        return this._physics_attack;
+    }
+    public set physics_attack(value: number) {
+        if (value > 5000) this._physics_attack = 5000;
+        else if (value < 100) this._physics_attack = 100;
+        else this._physics_attack = value;
+    }
+    //////魔法攻击
+    public get magic_attack(): number {
+        return this._magic_attack;
+    }
+    public set magic_attack(value: number) {
+        if (value > 5000) this._magic_attack = 5000;
+        else if (value < 100) this._magic_attack = 100;
+        else this._magic_attack = value;
+    }
+    /////物理防御
+    public get physics_defense(): number {
+        return this._physics_defense;
+    }
+    public set physics_defense(value: number) {
+        if (value > 2000) this._physics_defense = 2000;
+        else if (value < 50) this._physics_defense = 50;
+        else this._physics_defense = value;
+    }
+    /////魔法防御
+    public get magic_defense(): number {
+        return this._magic_defense;
+    }
+    public set magic_defense(value: number) {
+        if (value > 2000) this._magic_defense = 2000;
+        else if (value < 50) this._magic_defense = 50;
+        else this._magic_defense = value;
+    }
     ///获得移动一格子的间隔帧
     public getTickSpeed():number {
         return Math.ceil((1000 - this.speed) / 100);

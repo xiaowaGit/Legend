@@ -1,3 +1,4 @@
+import { Player } from "./Player";
 
 /*
     物品基类
@@ -18,6 +19,6 @@ export abstract class Res {
         this.name = name;
         this.type = type;
     }
-
-    abstract use():void;
+    /////使用物品
+    abstract use(player:Player):void;
 }
