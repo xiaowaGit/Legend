@@ -4,12 +4,18 @@ import { ChannelService, Channel } from "pinus";
 import { PActor } from "../base/PActor";
 import { PRes } from "../base/PRes";
 import { Player } from "../base/Player";
+import { Point } from "../base/Point";
+import { Move } from "../Effect/Move";
 
 export interface PTerm {//项
     player:PActor;
     res:PRes;
 }
 
+interface Message {//消息
+    handler:string;//消息处理函数名
+    body:any;//消息体
+}
 /*
     场景驱动
 */
@@ -23,6 +29,7 @@ export class MainScene extends Target {
     }
 
     public name:string = null;
+    private _message_stack:Message[] = [];
     private _actors_dic:{} = {};
     private _actors:Actor[] = [];
     public grid_map:number[][] = [];
@@ -45,9 +52,24 @@ export class MainScene extends Target {
         }
     }
 
+    public push_message(msg:Message):void {
+        this._message_stack.push(msg);
+    }
+
     private tick():void {
+        this.handler_message();
         this.execute_effect();
         this.manager_res();
+    }
+    private handler_message():void {////处理客户端消息（每帧处理）
+        while(this._message_stack.length > 0) {
+            let msg:Message = this._message_stack.shift();
+            if (this[msg.handler]) {
+                this[msg.handler](msg.body);
+            }else{
+                console.error("MainScene not has "+msg.handler+" function!");
+            }
+        }
     }
     private manager_res():void {////管理地图资源，生成和销毁吃鸡装备
 
@@ -60,7 +82,7 @@ export class MainScene extends Target {
         this.run();///全局效果
     }
     ///进入游戏世界
-    public enter_game(user_name):void {
+    public enter_game(user_name):Player {
         let pactor:PActor = {prev:null,next:null,player:null};
         let player:Player = new Player(user_name,this.grid_map[0].length,
             this.grid_map.length,this,pactor);
@@ -68,7 +90,8 @@ export class MainScene extends Target {
         player.move_to(player.point);
         this._actors.push(player);
         this._actors_dic[user_name] = player;
-        this.notice_all_player("onCreate",player);
+        // this.notice_all_player("onCreate",player);
+        return player;
     }
     ///离开游戏世界
     public leave_game(user_name):void {
@@ -82,12 +105,12 @@ export class MainScene extends Target {
         }
     }
 
-    set_channel(channelService: ChannelService, channel: Channel):void {
+    public set_channel(channelService: ChannelService, channel: Channel):void {
         this._channelService = channelService;
         this._channel = channel;
     }
     /// 向某个玩家通知消息
-    notice_one_player(onType:string,body:Object,tuid:string):void {
+    public notice_one_player(onType:string,body:Object,tuid:string):void {
         let tsid = this._channel.getMember(tuid)['sid'];
         this._channelService.pushMessageByUids(onType, body, [{
             uid: tuid,
@@ -95,7 +118,7 @@ export class MainScene extends Target {
         }]);
     }
     ////向地图的所有玩家推送消息
-    notice_all_player(onType:string,body:Object):void {
+    public notice_all_player(onType:string,body:Object):void {
         this._channel.pushMessage(onType, body);
     }
 
@@ -108,5 +131,15 @@ export class MainScene extends Target {
         this._channel = null;
         this._channelService = null;
         MainScene._instance = null;
+    }
+
+    ////////----------------message 处理函数-----------------------------
+
+    private handler_move_to(body:{pot:Point,target:string}):void {
+        let player:Player = this._actors_dic[body.target];
+        if (player) {
+            let move:Move = new Move(body.pot,this.grid_map,player);
+            player.pushEffect(move);
+        }
     }
 }

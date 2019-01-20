@@ -1,6 +1,8 @@
 import { SceneRemote } from '../remote/sceneRemote';
 import {Application, BackendSession} from 'pinus';
 import { FrontendSession } from 'pinus';
+import { Point } from '../base/Point';
+import { MainScene } from '../drive/MainScene';
 
 export default function(app: Application) {
     return new SceneHandler(app);
@@ -41,6 +43,15 @@ export class SceneHandler {
                 uid: tuid,
                 sid: tsid
             }]);
+        }
+    }
+    /////玩家移动操作
+    async move_to(msg: {handler:string, body:{pot:Point,target: string}}, session: BackendSession) {
+        if (session.uid != msg.body.target) {
+            return {error : "你只能移动自己！"};
+        }else{
+            MainScene.getInstance().push_message(msg);
+            return {ok : 200};
         }
     }
 }
