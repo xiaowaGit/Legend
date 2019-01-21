@@ -20,5 +20,5 @@ export abstract class Res {
         this.type = type;
     }
     /////使用物品
-    abstract use(player:Player):void;
+    abstract use(player:Player):Boolean;
 }
