@@ -61,6 +61,20 @@ export class Player extends Actor {
             return true;
         }
     }
+    ////从包囊中发现物品
+    public find_package_obj(res:Res):number {
+        for (let index = 0; index < 20; index++) {
+            const element:Res = this._ress[index];
+            if (element == res) return index;
+        }
+        return null;
+    }
+    //////取出物品
+    public out_package_index(index:number):Res {
+        let res:Res = this._ress[index];
+        this._ress[index] = null;
+        return res;
+    }
     /////卸下武器
     public un_arms():boolean {
         return this.un_equipment('arms');
@@ -85,20 +99,7 @@ export class Player extends Actor {
     public un_necklace():boolean {
         return this.un_equipment('necklace');
     }
-    ////从包囊中发现物品
-    public find_package_obj(res:Res):number {
-        for (let index = 0; index < 20; index++) {
-            const element:Res = this._ress[index];
-            if (element == res) return index;
-        }
-        return null;
-    }
-    //////取出物品
-    public out_package_index(index:number):Res {
-        let res:Res = this._ress[index];
-        this._ress[index] = null;
-        return res;
-    }
+    
     ////向地图的所有玩家推送消息
     public notice_all_player(onType:string,body:Object):void {
         this._scene.notice_all_player(onType,body);
