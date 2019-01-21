@@ -1,13 +1,13 @@
 import { Actor } from "./Actor";
 import { MainScene, PTerm } from "../drive/MainScene";
 import { PActor } from "./PActor";
-import { Arms } from "./Arms";
-import { Res } from "./Res";
-import { Helmet } from "./Helmet";
-import { Clothes } from "./Clothes";
-import { Shoes } from "./Shoes";
-import { Jewelry } from "./Jewelry";
-import { Necklace } from "./Necklace";
+import { Arms } from "../Res/Arms";
+import { Res } from "../Res/Res";
+import { Helmet } from "../Res/Helmet";
+import { Clothes } from "../Res/Clothes";
+import { Shoes } from "../Res/Shoes";
+import { Jewelry } from "../Res/Jewelry";
+import { Necklace } from "../Res/Necklace";
 
 /*
      角色类

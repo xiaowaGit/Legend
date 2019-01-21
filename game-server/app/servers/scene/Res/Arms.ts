@@ -1,5 +1,5 @@
 import { EquipmentRes } from "./EquipmentRes";
-import { Player } from "./Player";
+import { Player } from "../base/Player";
 
 export interface ArmsConfig {
     name:string;

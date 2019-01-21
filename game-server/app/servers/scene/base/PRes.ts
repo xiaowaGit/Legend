@@ -1,4 +1,4 @@
-import { Res } from "./Res";
+import { Res } from "../Res/Res";
 
 export interface PRes {
     prev:PRes;

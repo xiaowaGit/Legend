@@ -1,7 +1,7 @@
 import { EquipmentRes } from "./EquipmentRes";
-import { Player } from "./Player";
+import { Player } from "../base/Player";
 
-export interface JewelrytConfig {
+export interface NecklaceConfig {
     name:string;
     blood:number;//气血增量
     magic:number;//魔法增量
@@ -11,22 +11,23 @@ export interface JewelrytConfig {
     has_physics_attack:number;//需要物理攻击
     has_magic_attack:number;//需要魔法攻击
 }
+
 /*
-    首饰
+    项链
 */
 
-export class Jewelry extends EquipmentRes {
+export class Necklace extends EquipmentRes {
     
-    private _config:JewelrytConfig = null;
+    private _config:NecklaceConfig = null;
 
-    constructor(config:JewelrytConfig){
-        super(config.name,EquipmentRes.JEWELRY_TYPE);
+    constructor(config:NecklaceConfig){
+        super(config.name,EquipmentRes.NECKLACE_TYPE);
         this._config = config;
     }
 
     public use(player:Player):Boolean {
         if (player.physics_attack < this._config.has_physics_attack || player.magic_attack < this._config.has_magic_attack) return false;
-        if(player.un_jewelry()) {
+        if(player.un_necklace()) {
             let index = player.find_package_obj(this);
             if (!index) {
                 return false;
@@ -37,7 +38,7 @@ export class Jewelry extends EquipmentRes {
                 player.physics_attack += this._config.physics_attack;
                 player.magic_attack += this._config.magic_attack;
                 player.speed += this._config.speed;
-                player.jewelry = this;
+                player.necklace = this;
                 return true;
             }
         }else {
@@ -46,7 +47,7 @@ export class Jewelry extends EquipmentRes {
     }
 
     public unuse(player:Player):void {
-        if (player.jewelry != this) return;
+        if (player.necklace != this) return;
         player.blood -= this._config.blood;
         player.magic -= this._config.magic;
         player.physics_attack -= this._config.physics_attack;

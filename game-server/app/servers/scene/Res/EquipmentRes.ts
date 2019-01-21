@@ -1,5 +1,5 @@
 import { Res } from "./Res";
-import { Player } from "./Player";
+import { Player } from "../base/Player";
 
 /*
     装备基类

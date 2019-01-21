@@ -1,33 +1,31 @@
 import { EquipmentRes } from "./EquipmentRes";
-import { Player } from "./Player";
+import { Player } from "../base/Player";
 
-export interface NecklaceConfig {
+
+export interface ShoesConfig {
     name:string;
     blood:number;//气血增量
     magic:number;//魔法增量
-    physics_attack:number;//物理攻击增加
-    magic_attack:number;//魔法攻击增加
-    speed:number;//速度增加
+    speed:number;//速度增量
     has_physics_attack:number;//需要物理攻击
     has_magic_attack:number;//需要魔法攻击
 }
-
 /*
-    项链
+    鞋子
 */
 
-export class Necklace extends EquipmentRes {
+export class Shoes extends EquipmentRes {
     
-    private _config:NecklaceConfig = null;
+    private _config:ShoesConfig = null;
 
-    constructor(config:NecklaceConfig){
-        super(config.name,EquipmentRes.NECKLACE_TYPE);
+    constructor(config:ShoesConfig){
+        super(config.name,EquipmentRes.SHOES_TYPE);
         this._config = config;
     }
 
     public use(player:Player):Boolean {
         if (player.physics_attack < this._config.has_physics_attack || player.magic_attack < this._config.has_magic_attack) return false;
-        if(player.un_necklace()) {
+        if(player.un_shoes()) {
             let index = player.find_package_obj(this);
             if (!index) {
                 return false;
@@ -35,10 +33,8 @@ export class Necklace extends EquipmentRes {
                 player.out_package_index(index);
                 player.blood += this._config.blood;
                 player.magic += this._config.magic;
-                player.physics_attack += this._config.physics_attack;
-                player.magic_attack += this._config.magic_attack;
                 player.speed += this._config.speed;
-                player.necklace = this;
+                player.shoes = this;
                 return true;
             }
         }else {
@@ -47,11 +43,9 @@ export class Necklace extends EquipmentRes {
     }
 
     public unuse(player:Player):void {
-        if (player.necklace != this) return;
+        if (player.shoes != this) return;
         player.blood -= this._config.blood;
         player.magic -= this._config.magic;
-        player.physics_attack -= this._config.physics_attack;
-        player.magic_attack -= this._config.magic_attack;
         player.speed -= this._config.speed;
     }
 }
