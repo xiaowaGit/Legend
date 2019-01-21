@@ -48,4 +48,8 @@ export class Shoes extends EquipmentRes {
         player.magic -= this._config.magic;
         player.speed -= this._config.speed;
     }
+    
+    public get_config():{} {
+        return this._config;
+    }
 }

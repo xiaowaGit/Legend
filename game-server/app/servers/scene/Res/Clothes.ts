@@ -45,4 +45,8 @@ export class Clothes extends EquipmentRes {
         player.blood -= this._config.blood;
         player.magic -= this._config.magic;
     }
+    
+    public get_config():{} {
+        return this._config;
+    }
 }

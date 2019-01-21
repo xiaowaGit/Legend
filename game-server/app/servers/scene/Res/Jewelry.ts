@@ -53,4 +53,8 @@ export class Jewelry extends EquipmentRes {
         player.magic_attack -= this._config.magic_attack;
         player.speed -= this._config.speed;
     }
+    
+    public get_config():{} {
+        return this._config;
+    }
 }
