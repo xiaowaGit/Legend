@@ -3,6 +3,11 @@ import { MainScene, PTerm } from "../drive/MainScene";
 import { PActor } from "./PActor";
 import { Arms } from "./Arms";
 import { Res } from "./Res";
+import { Helmet } from "./Helmet";
+import { Clothes } from "./Clothes";
+import { Shoes } from "./Shoes";
+import { Jewelry } from "./Jewelry";
+import { Necklace } from "./Necklace";
 
 /*
      角色类
@@ -10,6 +15,11 @@ import { Res } from "./Res";
 export class Player extends Actor {
     
     public arms:Arms = null;
+    public helmet:Helmet = null;
+    public clothes:Clothes = null;
+    public shoes:Shoes = null;
+    public jewelry:Jewelry = null;
+    public necklace:Necklace = null;
     private _ress:Res[] = [];
 
     constructor(name:string,map_w:number,map_h:number,scene:MainScene,pactor:PActor) {
@@ -39,17 +49,41 @@ export class Player extends Actor {
         this._ress[index] = res;
         return true;
     }
-    /////卸下武器
-    public un_arms():boolean {
-        if (!this.arms) return true;
-        if (this.arms && this.is_package_gap() == false) return false;
-        if (this.arms) {
-            this.arms.unuse(this);
+    //////卸下指定key的装备
+    private un_equipment(key:string):boolean {
+        if (!this[key]) return true;
+        if (this[key] && this.is_package_gap() == false) return false;
+        if (this[key]) {
+            this[key].unuse(this);
             let index:number = this.get_package_gap();
-            this.dis_package_index(index,this.arms);
-            this.arms = null;
+            this.dis_package_index(index,this[key]);
+            this[key] = null;
             return true;
         }
+    }
+    /////卸下武器
+    public un_arms():boolean {
+        return this.un_equipment('arms');
+    }
+    /////卸下头盔
+    public un_helmet():boolean {
+        return this.un_equipment('helmet');
+    }
+    /////卸下衣服
+    public un_clothes():boolean {
+        return this.un_equipment('clothes');
+    }
+    /////卸下鞋子
+    public un_shoes():boolean {
+        return this.un_equipment('shoes');
+    }
+    /////卸下首饰
+    public un_jewelry():boolean {
+        return this.un_equipment('jewelry');
+    }
+    /////卸下项链
+    public un_necklace():boolean {
+        return this.un_equipment('necklace');
     }
     ////从包囊中发现物品
     public find_package_obj(res:Res):number {
