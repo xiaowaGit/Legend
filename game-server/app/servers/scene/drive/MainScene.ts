@@ -84,11 +84,8 @@ export class MainScene extends Target {
     }
     ///进入游戏世界
     public enter_game(user_name):Player {
-        let pactor:PActor = {prev:null,next:null,player:null};
         let player:Player = new Player(user_name,this.grid_map[0].length,
-            this.grid_map.length,this,pactor);
-        pactor.player = player;
-        player.move_to(player.point);
+            this.grid_map.length,this);
         this._actors.push(player);
         this._actors_dic[user_name] = player;
         // this.notice_all_player("onCreate",player);

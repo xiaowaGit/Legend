@@ -14,16 +14,26 @@ import { Necklace } from "../Res/Necklace";
 */
 export class Player extends Actor {
     
-    public arms:Arms = null;
-    public helmet:Helmet = null;
-    public clothes:Clothes = null;
-    public shoes:Shoes = null;
-    public jewelry:Jewelry = null;
-    public necklace:Necklace = null;
-    private _ress:Res[] = [];
+    public arms:Arms;
+    public helmet:Helmet;
+    public clothes:Clothes;
+    public shoes:Shoes;
+    public jewelry:Jewelry;
+    public necklace:Necklace;
+    private _ress:Res[];
 
-    constructor(name:string,map_w:number,map_h:number,scene:MainScene,pactor:PActor) {
+    constructor(name:string,map_w:number,map_h:number,scene:MainScene) {
+        let pactor:PActor = {prev:null,next:null,player:null};
         super(name,map_w,map_h,scene,pactor);
+        pactor.player = this;
+        this.move_to(this.point);
+        this.arms = null;
+        this.helmet = null;
+        this.clothes = null;
+        this.shoes = null;
+        this.jewelry = null;
+        this.necklace = null;
+        this._ress = [];
     }
     /////包裹是否有空位
     public is_package_gap():Boolean {
@@ -98,6 +108,10 @@ export class Player extends Actor {
     /////卸下项链
     public un_necklace():boolean {
         return this.un_equipment('necklace');
+    }
+
+    public get_scene():MainScene {
+        return this._scene;
     }
     
     ////向地图的所有玩家推送消息
