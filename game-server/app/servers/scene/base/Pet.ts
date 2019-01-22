@@ -19,6 +19,10 @@ export interface PetConfig {
 */
 export class Pet extends Actor {
 
+    private _config:PetConfig;
+    private _player:Player;
+    private _attack_target:Actor;
+
     constructor(config:PetConfig,player:Player) {
         let pactor:PActor = {prev:null,next:null,player:null};
         let player_name:string = player.name;
@@ -27,8 +31,19 @@ export class Pet extends Actor {
         pactor.player = this;
         this.point = player.point;
         this.move_to(this.point);
+        this._config = config;
+        this._player = player;
     }
     
+    public get_config_name():string {
+        return this._config.name;
+    }
+
+    /////设置攻击目标
+    public set_attack_target(target:Actor):void {
+        this._attack_target = target;
+    }
+
     ////向地图的所有玩家推送消息
     public notice_all_player(onType:string,body:Object):void {
         this._scene.notice_all_player(onType,body);

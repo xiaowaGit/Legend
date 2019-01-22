@@ -8,6 +8,7 @@ import { Clothes } from "../Res/Clothes";
 import { Shoes } from "../Res/Shoes";
 import { Jewelry } from "../Res/Jewelry";
 import { Necklace } from "../Res/Necklace";
+import { Pet } from "./Pet";
 
 /*
      角色类
@@ -21,6 +22,7 @@ export class Player extends Actor {
     public jewelry:Jewelry;
     public necklace:Necklace;
     private _ress:Res[];
+    private _pets:Pet[];
 
     constructor(name:string,map_w:number,map_h:number,scene:MainScene) {
         let pactor:PActor = {prev:null,next:null,player:null};
@@ -34,6 +36,14 @@ export class Player extends Actor {
         this.jewelry = null;
         this.necklace = null;
         this._ress = [];
+        this._pets = [];
+    }
+    /////是否存在某个类型的宠物
+    public has_type_pet(config_name:string):boolean {
+        this._pets.forEach(element => {
+            if (element.get_config_name() == config_name) return true;
+        });
+        return false;
     }
     /////包裹是否有空位
     public is_package_gap():Boolean {

@@ -86,8 +86,7 @@ export class MainScene extends Target {
     public enter_game(user_name):Player {
         let player:Player = new Player(user_name,this.grid_map[0].length,
             this.grid_map.length,this);
-        this._actors.push(player);
-        this._actors_dic[user_name] = player;
+        this.add_actor(player);
         // this.notice_all_player("onCreate",player);
         return player;
     }
@@ -101,6 +100,11 @@ export class MainScene extends Target {
             this._actors_dic[user_name] = null;
             this.notice_all_player("onDelete",player);
         }
+    }
+    ////添加actor
+    public add_actor(actor:Actor):void {
+        this._actors.push(actor);
+        this._actors_dic[actor.name] = actor;
     }
 
     public set_channel(channelService: ChannelService, channel: Channel):void {
