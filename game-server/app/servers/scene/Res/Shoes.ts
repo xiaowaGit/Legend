@@ -7,6 +7,8 @@ export interface ShoesConfig {
     blood:number;//气血增量
     magic:number;//魔法增量
     speed:number;//速度增量
+    physics_defense:number;//物理防御
+    magic_defense:number;//魔法防御
     has_physics_attack:number;//需要物理攻击
     has_magic_attack:number;//需要魔法攻击
 }
@@ -34,6 +36,8 @@ export class Shoes extends EquipmentRes {
                 player.blood += this._config.blood;
                 player.magic += this._config.magic;
                 player.speed += this._config.speed;
+                player.physics_defense += this._config.physics_defense;
+                player.magic_defense += this._config.magic_defense;
                 player.shoes = this;
                 return true;
             }
@@ -47,6 +51,8 @@ export class Shoes extends EquipmentRes {
         player.blood -= this._config.blood;
         player.magic -= this._config.magic;
         player.speed -= this._config.speed;
+        player.physics_defense -= this._config.physics_defense;
+        player.magic_defense -= this._config.magic_defense;
     }
     
     public get_config():{} {

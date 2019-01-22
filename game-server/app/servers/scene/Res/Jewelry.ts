@@ -7,6 +7,8 @@ export interface JewelrytConfig {
     magic:number;//魔法增量
     physics_attack:number;//物理攻击增加
     magic_attack:number;//魔法攻击增加
+    physics_defense:number;//物理防御
+    magic_defense:number;//魔法防御
     speed:number;//速度增加
     has_physics_attack:number;//需要物理攻击
     has_magic_attack:number;//需要魔法攻击
@@ -37,6 +39,8 @@ export class Jewelry extends EquipmentRes {
                 player.physics_attack += this._config.physics_attack;
                 player.magic_attack += this._config.magic_attack;
                 player.speed += this._config.speed;
+                player.physics_defense += this._config.physics_defense;
+                player.magic_defense += this._config.magic_defense;
                 player.jewelry = this;
                 return true;
             }
@@ -52,6 +56,8 @@ export class Jewelry extends EquipmentRes {
         player.physics_attack -= this._config.physics_attack;
         player.magic_attack -= this._config.magic_attack;
         player.speed -= this._config.speed;
+        player.physics_defense -= this._config.physics_defense;
+        player.magic_defense -= this._config.magic_defense;
     }
     
     public get_config():{} {
