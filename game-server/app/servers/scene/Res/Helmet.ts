@@ -3,8 +3,8 @@ import { Player } from "../base/Player";
 
 export interface HelmetConfig {
     name:string;
-    blood:number;//气血增量
-    magic:number;//魔法增量
+    blood_limit:number;//气血增量
+    magic_limit:number;//魔法增量
     physics_defense:number;//物理防御
     magic_defense:number;//魔法防御
     has_physics_attack:number;//需要物理攻击
@@ -30,8 +30,8 @@ export class Helmet extends EquipmentRes {
                 return false;
             }else{
                 player.out_package_index(index);
-                player.blood += this._config.blood;
-                player.magic += this._config.magic;
+                player.blood_limit += this._config.blood_limit;
+                player.magic_limit += this._config.magic_limit;
                 player.physics_defense += this._config.physics_defense;
                 player.magic_defense += this._config.magic_defense;
                 player.helmet = this;
@@ -44,8 +44,8 @@ export class Helmet extends EquipmentRes {
 
     public unuse(player:Player):void {
         if (player.helmet != this) return;
-        player.blood -= this._config.blood;
-        player.magic -= this._config.magic;
+        player.blood_limit -= this._config.blood_limit;
+        player.magic_limit -= this._config.magic_limit;
         player.physics_defense -= this._config.physics_defense;
         player.magic_defense -= this._config.magic_defense;
     }

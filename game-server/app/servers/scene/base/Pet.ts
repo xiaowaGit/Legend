@@ -33,6 +33,15 @@ export class Pet extends Actor {
         this.move_to(this.point);
         this._config = config;
         this._player = player;
+        ////属性初始化
+        this.blood_limit = config.blood_limit;
+        this.magic_limit = config.magic_limit;
+        this.blood = config.blood;
+        this.magic = config.magic;
+        this.physics_attack = config.physics_attack;
+        this.magic_attack = config.magic_attack;
+        this.physics_defense = config.physics_defense;
+        this.magic_defense = config.magic_defense;
     }
     
     public get_config_name():string {

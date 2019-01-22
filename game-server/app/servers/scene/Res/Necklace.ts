@@ -3,8 +3,8 @@ import { Player } from "../base/Player";
 
 export interface NecklaceConfig {
     name:string;
-    blood:number;//气血增量
-    magic:number;//魔法增量
+    blood_limit:number;//气血增量
+    magic_limit:number;//魔法增量
     physics_attack:number;//物理攻击增加
     magic_attack:number;//魔法攻击增加
     physics_defense:number;//物理防御
@@ -35,8 +35,8 @@ export class Necklace extends EquipmentRes {
                 return false;
             }else{
                 player.out_package_index(index);
-                player.blood += this._config.blood;
-                player.magic += this._config.magic;
+                player.blood_limit += this._config.blood_limit;
+                player.magic_limit += this._config.magic_limit;
                 player.physics_attack += this._config.physics_attack;
                 player.magic_attack += this._config.magic_attack;
                 player.speed += this._config.speed;
@@ -52,8 +52,8 @@ export class Necklace extends EquipmentRes {
 
     public unuse(player:Player):void {
         if (player.necklace != this) return;
-        player.blood -= this._config.blood;
-        player.magic -= this._config.magic;
+        player.blood_limit -= this._config.blood_limit;
+        player.magic_limit -= this._config.magic_limit;
         player.physics_attack -= this._config.physics_attack;
         player.magic_attack -= this._config.magic_attack;
         player.speed -= this._config.speed;
