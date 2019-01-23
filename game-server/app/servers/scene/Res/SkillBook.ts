@@ -44,7 +44,6 @@ export class SkillBook extends Res {
         }
         player.blood += this._config.blood;
         player.magic += this._config.magic;
-        player.out_package_index(index);
         this._over_time = Date.now() + this._cd;
         return true;
     }
