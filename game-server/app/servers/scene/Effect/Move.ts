@@ -22,13 +22,15 @@ export class Move implements Effect {
     private _speed:number;
     private _ppath:number = 0;
     private _is_end: boolean;
+    private _is_over:boolean;///是否走到终点，否则走到终点的前一点
 
-    constructor(to:Point,map:number[][],active:Target) {
+    constructor(to:Point,map:number[][],active:Target,is_over:boolean = true) {
         this._to = to;
         this._active = active;
         this._map = map;
         this._player = active.getTarget()[0];
         this._o = this._player.point;
+        this._is_over = is_over;
         
         let pathFind = new A_star_pathfinder();
         this._pathFind = pathFind;
@@ -60,7 +62,9 @@ export class Move implements Effect {
             this._tick++;
             if(this._tick >= this._speed) {
                 this._tick = 0;
-                if(!this._path || this._ppath >= this._path.length){
+                if(!this._path
+                 || (this._is_over && this._ppath >= this._path.length)
+                 || (!this._is_over && this._ppath >= this._path.length-1) ){
                     this._is_end = true;
                     this._is_run = false;
                     return

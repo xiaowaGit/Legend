@@ -94,11 +94,18 @@ export class MainScene extends Target {
     public leave_game(user_name):void {
         let player:Player = this._actors_dic[user_name];
         if (player) {
+            this.remove_actor(player);
+            this.notice_all_player("onDelete",player);
+        }
+    }
+    ///移除角色
+    public remove_actor(actor:Actor):void {
+        let player:Actor = this._actors_dic[actor.name];
+        if (player) {
             player.out();//离开地图
             let index:number = this._actors.indexOf(player);
             this._actors.splice(index,1);
-            this._actors_dic[user_name] = null;
-            this.notice_all_player("onDelete",player);
+            this._actors_dic[actor.name] = null;
         }
     }
     ////添加actor

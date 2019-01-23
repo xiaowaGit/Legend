@@ -1,5 +1,9 @@
 import { Effect } from "../base/Effect";
 import { Target } from "../base/Target";
+import { PetConfig, Pet } from "../base/Pet";
+import { Player } from "../base/Player";
+import { MainScene } from "../drive/MainScene";
+import { MonsterAI } from "./MonsterAI";
 
 /*
     召唤麒麟
@@ -7,10 +11,13 @@ import { Target } from "../base/Target";
 
 export class Callkylin implements Effect {
     
-    private _target:Target = null;
+    private _target:Player = null;
+    private _config:PetConfig = null;
+    private _is_run:boolean = false;
 
-    constructor(active:Target) {
+    constructor(config:PetConfig,active:Player) {
         this._target = active;
+        this._config = config;
     }
 
     getName(): string {
@@ -23,13 +30,18 @@ export class Callkylin implements Effect {
         return this._target;
     }
     run(): void {
-        throw new Error("Method not implemented.");
+        let pet:Pet = new Pet(this._config,this._target);
+        let main_scene:MainScene = this._target.get_scene();
+        if(!this._target.add_pet(pet)) return;
+        main_scene.add_actor(pet);
+        let effect:Effect = new MonsterAI(pet);
+        pet.pushEffect(effect);
     }
     is_run(): Boolean {
-        throw new Error("Method not implemented.");
+        return this._is_run;
     }
     kill(): void {
-        throw new Error("Method not implemented.");
+        return;
     }
 
 }

@@ -1,34 +1,46 @@
 import { Actor } from "./Actor";
 import { Effect } from "./Effect";
 
+/*
+    目标类
+    不能提供删除效果的接口，要移除效果只能调用效果的kill方法
+*/
 export abstract class Target {
     
-    private effect_stack:Effect[] = [];//效果栈
+    private _effect_stack:Effect[] = [];//效果栈
 
     constructor() {
     }
 
+    ////是否有某个效果了
+    public hasEffect(effect_name:string):boolean {
+        this._effect_stack.forEach(element => {
+            if (element.getName() == effect_name) return true;
+        });
+        return false;
+    }
+
     public pushEffect(e:Effect):void {
-        this.effect_stack.push(e);
+        this._effect_stack.push(e);
     }
     ///获得效果栈
     public getEffectStack():Effect[] {
-        return this.effect_stack;
+        return this._effect_stack;
     }
 
     public run():void { // 运行角色身上的效果
-        for(let i=0;i<this.effect_stack.length;i++) {
-            let e:Effect = this.effect_stack[i];
+        for(let i=0;i<this._effect_stack.length;i++) {
+            let e:Effect = this._effect_stack[i];
             e.run();
         }
         let del_list:Effect[] = [];
-        this.effect_stack.forEach(element => {
+        this._effect_stack.forEach(element => {
             let is_run = element.is_run();
             if (!is_run) del_list.push(element);
         });
         del_list.forEach(element => {
-            let index = this.effect_stack.indexOf(element);
-            if (index != -1) this.effect_stack.splice(index,1);
+            let index = this._effect_stack.indexOf(element);
+            if (index != -1) this._effect_stack.splice(index,1);
         });
     }
 

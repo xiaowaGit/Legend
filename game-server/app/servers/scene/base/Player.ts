@@ -45,6 +45,26 @@ export class Player extends Actor {
         });
         return false;
     }
+    ////添加一个宠物
+    public add_pet(pet:Pet):boolean {
+        if (this.has_type_pet(pet.get_config_name())) return false;
+        this._pets.push(pet);
+        return true;
+    }
+    //////移除一个宠物
+    public remove_pet(pet:Pet):void {
+        let index:number = this.find_pet_obj(pet);
+        if (!index) return;
+        if (index) this._pets.splice(index,1);
+    }
+    //////发现pet
+    public find_pet_obj(pet:Pet):number {
+        for (let index = 0; index < this._pets.length; index++) {
+            const element:Pet = this._pets[index];
+            if (element == pet) return index;
+        }
+        return null;
+    }
     /////包裹是否有空位
     public is_package_gap():Boolean {
         for (let index = 0; index < 20; index++) {
@@ -124,6 +144,10 @@ export class Player extends Actor {
         return this._scene;
     }
     
+    public get_config_name():string {
+        return '人';
+    }
+
     ////向地图的所有玩家推送消息
     public notice_all_player(onType:string,body:Object):void {
         this._scene.notice_all_player(onType,body);

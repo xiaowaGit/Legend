@@ -18,6 +18,8 @@ export abstract class Actor extends Target {
     private _magic_defense: number = 50;//魔法防御
     public point:Point = null;
     private _speed:number = 500;//玩家移动速度
+    public is_die:boolean = false;
+    private _die_time:number = null;
 
     protected _scene:MainScene = null;
     protected _pactor: PActor = null;
@@ -53,6 +55,10 @@ export abstract class Actor extends Target {
             term.player = this._pactor.next;
         }
     }
+    /////获得死亡时间
+    public get_die_time():number {
+        return this._die_time;
+    }
     ///// 移动速度
     public get speed():number {
         return this._speed;
@@ -73,7 +79,11 @@ export abstract class Actor extends Target {
     }
     public set blood(value: number) {
         if(value > this._blood_limit) this._blood = this._blood_limit;
-        else if (value < 0) this._blood = 0;
+        else if (value < 0) {
+            this._blood = 0;
+            this.is_die = true;
+            this._die_time = Date.now();
+        } 
         else this._blood = value;
     }
     /////气血上限
@@ -147,7 +157,8 @@ export abstract class Actor extends Target {
     public getTarget():Actor[] {
         return [this]
     }
-    
+
+    abstract get_config_name():string;
     abstract notice_all_player(onType:string,body:Object):void;
     abstract notice_one_player(onType:string,body:Object):void;
 }

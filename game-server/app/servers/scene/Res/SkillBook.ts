@@ -38,7 +38,7 @@ export class SkillBook extends Res {
             let effect_name:string = this._config.effect_name;
             if (effect_name == "Callkylin") {
                 if (player.has_type_pet("麒麟")) return false;
-                let effect:Callkylin = new Callkylin(player);
+                let effect:Callkylin = new Callkylin(this._config.pet_config,player);
                 player.pushEffect(effect);
             }
         }
