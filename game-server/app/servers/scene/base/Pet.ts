@@ -2,6 +2,7 @@ import { Actor } from "./Actor";
 import { Player } from "./Player";
 import { PActor } from "./PActor";
 import { Point } from "./Point";
+import { get_l } from "../../../util/tool";
 
 
 export interface PetConfig {
@@ -72,23 +73,16 @@ export class Pet extends Actor {
     public get_player():Player {
         return this._player;
     }
-    private get_l(pot1:Point,pot2:Point):number {
-        let x0:number = pot1.x;
-        let y0:number = pot1.y;
-        let x1:number = pot2.x;
-        let y1:number = pot2.y;
-        return Math.sqrt((x0 - x1)*(x0 - x1) + (y0 - y1)*(y0 - y1));
-    }
     /////获得和目标的距离
     public get_target_l():number {
         if (!this._attack_target) return null;
         let target_point:Point = this._attack_target.point;
-        return this.get_l(this.point,target_point);
+        return get_l(this.point,target_point);
     }
     /////获得和主人的距离
     public get_player_l():number {
         let player_point:Point = this._player.point;
-        return this.get_l(this.point,player_point);
+        return get_l(this.point,player_point);
     }
     ////向地图的所有玩家推送消息
     public notice_all_player(onType:string,body:Object):void {

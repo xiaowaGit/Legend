@@ -1,6 +1,8 @@
 import { Effect } from "../base/Effect";
 import { Target } from "../base/Target";
 import { Actor } from "../base/Actor";
+import { Point } from "../base/Point";
+import { get_l } from "../../../util/tool";
 
 /*
     普通攻击
@@ -36,6 +38,10 @@ export class Attack implements Effect {
     }
 
     run(): void {
+        let pot1:Point = this._active.point;
+        let pot2:Point = this._target.point;
+        let l:number = get_l(pot1,pot2);
+        if (l > 2)return; ///距离大于2攻击无效
         let physics_attack:number = this._active.physics_attack;
         let physics_defense:number = this._target.physics_defense;
         let hurt:number = Attack.getHurt(physics_attack,physics_defense);
