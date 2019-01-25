@@ -139,10 +139,6 @@ export class Player extends Actor {
     public un_necklace():boolean {
         return this.un_equipment('necklace');
     }
-
-    public get_scene():MainScene {
-        return this._scene;
-    }
     
     public get_config_name():string {
         return '人';
