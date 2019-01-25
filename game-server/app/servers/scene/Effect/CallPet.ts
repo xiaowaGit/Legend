@@ -6,10 +6,10 @@ import { MainScene } from "../drive/MainScene";
 import { MonsterAI } from "./MonsterAI";
 
 /*
-    召唤麒麟
+    召唤宠物
 */
 
-export class Callkylin implements Effect {
+export class CallPet implements Effect {
     
     private _target:Player = null;
     private _config:PetConfig = null;
@@ -21,7 +21,7 @@ export class Callkylin implements Effect {
     }
 
     getName(): string {
-        return "Callkylin";
+        return "CallPet";
     }
     getActive():Target {
         return this._target;

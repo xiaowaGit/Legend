@@ -1,7 +1,7 @@
 import { Res } from "./Res";
 import { Player } from "../base/Player";
 import { PetConfig } from "../base/Pet";
-import { Callkylin } from "../Effect/Callkylin";
+import { CallPet } from "../Effect/CallPet";
 import { EffectConfig } from "../base/Effect";
 
 export interface DrugConfig {
@@ -31,9 +31,9 @@ export class Drug extends Res {
         if (!index) return false;
         if (this._config.effect_name != "") {
             let effect_name:string = this._config.effect_name;
-            if (effect_name == "Callkylin") {
-                if (player.has_type_pet("麒麟")) return false;
-                let effect:Callkylin = new Callkylin(this._config.pet_config,player);
+            if (effect_name == "CallPet") {
+                if (player.has_type_pet(this._config.pet_config.name)) return false;
+                let effect:CallPet = new CallPet(this._config.pet_config,player);
                 player.pushEffect(effect);
             }
         }
