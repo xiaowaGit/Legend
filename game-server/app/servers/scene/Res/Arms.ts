@@ -21,6 +21,10 @@ export class Arms extends EquipmentRes {
         this._config = config;
     }
 
+    public get_arms_type():'knife'|'staff'|'stick' {
+        return this._config.arms_type;
+    }
+
     public use(player:Player):Boolean {
         if (player.blood_limit < this._config.has_blood || player.magic_limit < this._config.has_magic) return false;
         if(player.un_arms()) {

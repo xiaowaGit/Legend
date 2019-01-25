@@ -158,6 +158,10 @@ export abstract class Actor extends Target {
         return [this]
     }
 
+    public get_scene():MainScene {
+        return this._scene;
+    }
+    
     abstract get_config_name():string;
     abstract notice_all_player(onType:string,body:Object):void;
     abstract notice_one_player(onType:string,body:Object):void;
