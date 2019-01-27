@@ -72,6 +72,10 @@ export class PursueSun implements Effect {
     run(): void {
         let scene:MainScene = this._active.get_scene();
         let pot1:Point = this._active.point;
+        this._active.killEffectByName('Move');
+        this._active.notice_all_player('onPursueSun',
+        {active:this._active.name,
+        dir:this._dir});
         let pots:Point[] = PursueSun.select_grid(pot1,scene.grid_map,this._dir);
         pots.forEach(element => {
             let term:PTerm = scene.term_map[element.x][element.y];

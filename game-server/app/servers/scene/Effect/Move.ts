@@ -57,7 +57,7 @@ export class Move implements Effect {
             let speed = this._player.getTickSpeed();
             this._speed = speed;
             this._tick = 0;
-            this._player.notice_all_player("onMove",{path:path,speed:speed,target:this._player.name});
+            this._player.notice_all_player("onMove",{path:path,speed:speed,target:this._player.name,over:this._is_over});
         }else{
             this._tick++;
             if(this._tick >= this._speed) {

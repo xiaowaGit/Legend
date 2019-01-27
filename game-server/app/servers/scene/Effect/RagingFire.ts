@@ -35,6 +35,10 @@ export class RagingFire implements Effect {
         let pot2:Point = this._target.point;
         let l:number = get_l(pot1,pot2);
         if (l >= 2)return; ///距离大于2攻击无效
+        this._active.killEffectByName('Move');
+        this._active.notice_all_player('onRagingFire',
+        {active:this._active.name,
+        target:this._target.name});
         let physics_attack:number = this._active.physics_attack;
         let physics_defense:number = this._target.physics_defense;
         let hurt:number = RagingFire.getHurt(physics_attack,physics_defense);

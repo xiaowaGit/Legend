@@ -11,7 +11,15 @@ export abstract class Target {
 
     constructor() {
     }
-
+    ////kill 某类型效果
+    public killEffectByName(effect_name:string):void {
+        let effect_stack:Effect[] = this.getEffectStack();
+        effect_stack.forEach(element => {
+            if (element.getName() == effect_name) {
+                element.kill();
+            }
+        });
+    }
     ////是否有某个效果了
     public hasEffect(effect_name:string):boolean {
         this._effect_stack.forEach(element => {

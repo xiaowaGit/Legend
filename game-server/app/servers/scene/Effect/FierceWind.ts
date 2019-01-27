@@ -30,6 +30,9 @@ export class FierceWind implements Effect {
         return this._target;
     }
     run(): void {
+        this._active.killEffectByName('Move');
+        this._active.notice_all_player('onFierceWind',
+        {active:this._active.name});
         let active:Actor = this._active;
         let targets:Actor[] = this._target.getTarget();
         targets.forEach(element => {

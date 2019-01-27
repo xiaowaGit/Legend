@@ -46,6 +46,8 @@ export class Attack implements Effect {
         let physics_defense:number = this._target.physics_defense;
         let hurt:number = Attack.getHurt(physics_attack,physics_defense);
         this._target.blood -= hurt;
+        this._active.killEffectByName('Move');
+        this._active.notice_all_player('onAttack',{active:this._active.name,target:this._target.name});
     }
     
     is_run(): Boolean {

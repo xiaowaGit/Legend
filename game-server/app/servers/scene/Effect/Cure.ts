@@ -42,11 +42,18 @@ export class Cure implements Effect {
         if (!this._is_run) {
             this._gap_time = Date.now();
             this._is_run = true;
+            this._target.killEffectByName('Move');
+            this._target.notice_all_player('onCure',{active:this._target.name});
         }else{
             if (Date.now() - this._gap_time > this._gap_tick) {
                 this._target.blood += this._config.add_continue_blood || 0;
                 this._target.magic += this._config.add_continue_magic || 0;
                 this._gap_time = Date.now();
+                this._target.notice_all_player('onCure_Add',{
+                    active:this._target.name,
+                    blood:this._target.blood,
+                    magic:this._target.magic,
+                    config:this._config});
             }
         }
     }

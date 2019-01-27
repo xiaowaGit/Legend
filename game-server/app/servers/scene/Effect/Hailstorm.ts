@@ -34,6 +34,10 @@ export class Hailstorm implements Effect {
     }
     run(): void {
         if (get_l(this._active.point,this._tpot) > this._config.attack_l) return;///攻击有效范围
+        this._active.killEffectByName('Move');
+        this._active.notice_all_player('onHailstorm',
+        {active:this._active.name,
+        pot:this._tpot});
         let active:Actor = this._active;
         let targets:Actor[] = this._target.getTarget();
         targets.forEach(element => {

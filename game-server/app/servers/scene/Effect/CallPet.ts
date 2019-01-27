@@ -36,6 +36,8 @@ export class CallPet implements Effect {
         main_scene.add_actor(pet);
         let effect:Effect = new MonsterAI(pet);
         pet.pushEffect(effect);
+        this._target.killEffectByName('Move');
+        this._target.notice_all_player('onAttack',{active:this._target.name,config:this._config});
     }
     is_run(): Boolean {
         return this._is_run;

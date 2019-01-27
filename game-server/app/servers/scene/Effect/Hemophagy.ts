@@ -30,6 +30,10 @@ export class Hemophagy implements Effect {
     }
     run(): void {
         if (get_l(this._active.point,this._target.point) > this._config.attack_l) return;///攻击有效范围
+        this._active.killEffectByName('Move');
+        this._active.notice_all_player('onHemophagy',
+        {active:this._active.name,
+        target:this._target.name});
         let active:Actor = this._active;
         let target:Actor = this._target;
         let magic_attack:number = active.magic_attack;
