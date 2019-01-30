@@ -1,7 +1,7 @@
 import { EquipmentRes } from "./EquipmentRes";
 import { Player } from "../base/Player";
 
-export interface JewelrytConfig {
+export interface JewelryConfig {
     name:string;
     blood_limit:number;//气血增量
     magic_limit:number;//魔法增量
@@ -19,9 +19,9 @@ export interface JewelrytConfig {
 
 export class Jewelry extends EquipmentRes {
     
-    private _config:JewelrytConfig = null;
+    private _config:JewelryConfig = null;
 
-    constructor(config:JewelrytConfig){
+    constructor(config:JewelryConfig){
         super(config.name,EquipmentRes.JEWELRY_TYPE);
         this._config = config;
     }

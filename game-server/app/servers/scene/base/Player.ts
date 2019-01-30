@@ -65,6 +65,10 @@ export class Player extends Actor {
         }
         return null;
     }
+    /////获得指定位置的物品
+    public get_res_by_index(index:number):Res {
+        return this._ress[index];
+    }
     /////包裹是否有空位
     public is_package_gap():Boolean {
         for (let index = 0; index < 20; index++) {

@@ -46,10 +46,46 @@ export class SceneHandler {
         }
     }
     /////玩家移动操作
-    async move_to(msg: {handler:string, body:{pot:Point,target: string}}, session: BackendSession) {
-        if (session.uid != msg.body.target) {
+    async move_to( body:{pot:Point,target: string}, session: BackendSession) {
+        if (session.uid != body.target) {
             return {error : "你只能移动自己！"};
         }else{
+            let msg = {handler:'handler_move_to',body:body};
+            MainScene.getInstance().push_message(msg);
+            return {ok : 200};
+        }
+    }
+    /////玩家攻击操作
+    async attack(body:{target: string}, session: BackendSession) {
+        body['active'] = session.uid; //设置主动对象
+        if (body.target == session.uid) {
+            return {error : "不能攻击自己！"};
+        }else{
+            let msg = {handler:'handler_attack', body:body};
+            MainScene.getInstance().push_message(msg);
+            return {ok : 200};
+        }
+    }
+
+    /////使用物品
+    async use_res(body:{res_index:number}, session: BackendSession) {
+        body['active'] = session.uid; //设置主动对象
+        if (body.res_index < 0 ||  body.res_index >= 20 ) {
+            return {error : "物品下标超出范围！"};
+        }else{
+            let msg = {handler:'handler_use_res', body:body};
+            MainScene.getInstance().push_message(msg);
+            return {ok : 200};
+        }
+    }
+
+    /////使用技能
+    async uuse_res(body:{res_index:number,target:string,pot:Point}, session: BackendSession) {
+        body['active'] = session.uid; //设置主动对象
+        if (body.res_index < 0 ||  body.res_index >= 20 ) {
+            return {error : "物品下标超出范围！"};
+        }else{
+            let msg = {handler:'handler_uuse_res', body:body};
             MainScene.getInstance().push_message(msg);
             return {ok : 200};
         }

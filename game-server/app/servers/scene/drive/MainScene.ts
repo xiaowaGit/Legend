@@ -7,6 +7,9 @@ import { Player } from "../base/Player";
 import { Point } from "../base/Point";
 import { Move } from "../Effect/Move";
 import { Effect } from "../base/Effect";
+import { Attack } from "../Effect/Attack";
+import { Res } from "../Res/Res";
+import { SkillBook } from "../Res/SkillBook";
 
 export interface PTerm {//项
     player:PActor;
@@ -150,6 +153,34 @@ export class MainScene extends Target {
             player.killEffectByName('Move');
             let move:Move = new Move(body.pot,this.grid_map,player);
             player.pushEffect(move);
+        }
+    }
+    
+    private handler_attack( body:{target: string, active:string}):void {
+        let target:Actor = this._actors_dic[body.target];
+        let active:Actor = this._actors_dic[body.active];
+        if (target && active) {
+            let attack:Attack = new Attack(active,target);
+            active.pushEffect(attack);
+        }
+    }
+    
+    private handler_use_res( body:{res_index:number, active:string}):void {
+        let active:Player = this._actors_dic[body.active];
+        if (active) {
+            let res:Res = active.get_res_by_index(body.res_index);
+            if (res) res.use(active);
+        }
+    }
+    /////使用技能
+    private handler_uuse_res( body:{res_index:number,target:string,pot:Point, active:string}):void {
+        let active:Player = this._actors_dic[body.active];
+        let target:Actor = this._actors_dic[body.target];
+        if (active && target) {
+            let res:Res = active.get_res_by_index(body.res_index);
+            if (res.type != 'skill_book') return;
+            let book:SkillBook = <SkillBook>res;
+            book.uuse(active,target,body.pot);
         }
     }
 }
