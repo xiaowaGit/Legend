@@ -6,10 +6,10 @@ import { PRes } from "../base/PRes";
 import { Player } from "../base/Player";
 import { Point } from "../base/Point";
 import { Move } from "../Effect/Move";
-import { Effect } from "../base/Effect";
 import { Attack } from "../Effect/Attack";
 import { Res } from "../Res/Res";
 import { SkillBook } from "../Res/SkillBook";
+import { ResConfig } from "../../../util/resConfig";
 
 export interface PTerm {//项
     player:PActor;
@@ -76,8 +76,40 @@ export class MainScene extends Target {
         }
     }
     private manager_res():void {////管理地图资源，生成和销毁吃鸡装备
-
+        if (this.total_res_sum() < 100 && Math.random() > 0.9) {
+            let res:Res = ResConfig.get_random_res();
+            let x:number = Math.floor(Math.random() * 500);
+            let y:number = Math.floor(Math.random() * 500);
+            let pot:Point = {x:x,y:y};
+            this.res_move_to(pot,res);
+        }
     }
+    ///////放置物品到指定位置
+    private res_move_to(pot:Point,res:Res):void {
+        if (pot.x < 0 || pot.x >= 500 || pot.y < 0 || pot.y >= 500) return;
+        let pres:PRes = {res:res,prev:null,next:null};
+        let term:PTerm = this.term_map[pot.x][pot.y];
+        if(term.res)term.res.prev = pres;
+        pres.next = term.res;
+        pres.prev = null;
+        term.res = pres;
+    }
+    ///////统计地图物品的数量
+    private total_res_sum():number {
+        let sum:number = 0;
+        for (let i = 0; i < 500; i++) {
+            for (let j = 0; j < 500; j++) {
+                let term:PTerm = this.term_map[i][j];
+                let pres:PRes = term.res;
+                while(pres) {
+                    sum++;
+                    pres = pres.next;
+                }
+            }
+        }
+        return sum;
+    }
+
     ////执行游戏世界中的各种效果
     private execute_effect():void {
         this._actors.forEach(element => {///所有角色的效果

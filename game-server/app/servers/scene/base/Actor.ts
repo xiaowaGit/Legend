@@ -40,7 +40,7 @@ export abstract class Actor extends Target {
         let term_map:PTerm[][] = this._scene.term_map;
         this.out();///先跳出地图
         let term:PTerm = term_map[pot.x][pot.y];
-        term.player.prev = this._pactor;
+        if (term.player) term.player.prev = this._pactor;
         this._pactor.next = term.player;
         this._pactor.prev = null;
         term.player = this._pactor;
