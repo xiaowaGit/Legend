@@ -47,8 +47,8 @@ export class SceneRemote {
             channel.add(uid, sid);
         }
 
-        let user_info = MainScene.getInstance().enter_game(username);
-        return user_info;
+        let game_info = MainScene.getInstance().enter_game(username);
+        return game_info;
     }
 
     /**

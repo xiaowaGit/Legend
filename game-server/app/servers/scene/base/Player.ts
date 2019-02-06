@@ -38,6 +38,30 @@ export class Player extends Actor {
         this._ress = [];
         this._pets = [];
     }
+    /////获得角色信息
+    public get_info():{} {
+        let arms = this.arms && this.arms.get_res_info();
+        let helmet = this.helmet && this.helmet.get_res_info();
+        let clothes = this.clothes && this.clothes.get_res_info();
+        let shoes = this.shoes && this.shoes.get_res_info();
+        let jewelry = this.jewelry && this.jewelry.get_res_info();
+        let necklace = this.necklace && this.necklace.get_res_info();
+        let player = {name:this.name,blood:this.blood,blood_limit:this.blood_limit,
+        magic:this.magic,magic_limit:this.magic_limit,physics_attack:this.physics_attack,
+        magic_attack:this.magic_attack,physics_defense:this.physics_defense,
+        magic_defense:this.magic_defense,point:this.point,speed:this.speed,is_die:this.is_die};
+        return {arms:arms,helmet:helmet,clothes:clothes,shoes:shoes,jewelry:jewelry,
+        necklace:necklace,player:player};
+    }
+    ////获得角色背包
+    public get_bag():any[] {
+        let bag = [];
+        for (let index = 0; index < 20; index++) {
+            const element = this._ress[index];
+            bag[index] = element.get_res_info();
+        }
+        return bag;
+    }
     /////是否存在某个类型的宠物
     public has_type_pet(config_name:string):boolean {
         this._pets.forEach(element => {

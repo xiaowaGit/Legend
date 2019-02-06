@@ -82,6 +82,7 @@ export class MainScene extends Target {
             let y:number = Math.floor(Math.random() * 500);
             let pot:Point = {x:x,y:y};
             this.res_move_to(pot,res);
+            this.notice_all_player('onCreateRes',{name:res.name,point:pot});
         }
     }
     ///////放置物品到指定位置
@@ -118,15 +119,51 @@ export class MainScene extends Target {
         this.run();///全局效果
     }
     ///进入游戏世界
-    public enter_game(user_name):Player {
+    public enter_game(user_name:string):{} {
         let player:Player = new Player(user_name,this.grid_map[0].length,
             this.grid_map.length,this);
         this.add_actor(player);
+        let self = this;
         // this.notice_all_player("onCreate",player);
-        return player;
+        function get_other_players() {
+            let players = [];
+            self._actors.forEach(element => {
+                players.push({name:element.name,point:element.point});
+            });
+            return players;
+        }
+        function get_all_ress() {
+            let ress = [];
+            for (let i = 0; i < 500; i++) {
+                for (let j = 0; j < 500; j++) {
+                    let term:PTerm = this.term_map[i][j];
+                    let pres:PRes = term.res;
+                    while(pres) {
+                        ress.push({name:pres.res.name,point:{x:i,y:j}});
+                        pres = pres.next;
+                    }
+                }
+            }
+            return ress;
+        }
+        return {player:player.get_info(),other_players:get_other_players(),ress:get_all_ress()};
+    }
+    //////获得玩家背包数据
+    public get_player_bag(user_name:string):any[] {
+        let player:Player = this._actors_dic[user_name];
+        if (player) {
+            return player.get_bag();
+        }
+    }
+    ////////获得角色信息
+    public get_player_info(user_name:string):any {
+        let player:Player = this._actors_dic[user_name];
+        if (player) {
+            return player.get_info();
+        }
     }
     ///离开游戏世界
-    public leave_game(user_name):void {
+    public leave_game(user_name:string):void {
         let player:Player = this._actors_dic[user_name];
         if (player) {
             this.remove_actor(player);
@@ -213,6 +250,23 @@ export class MainScene extends Target {
             if (res.type != 'skill_book') return;
             let book:SkillBook = <SkillBook>res;
             book.uuse(active,target,body.pot);
+        }
+    }
+
+    /////拾取物品
+    private handler_pickup( body:{pot:Point, active:string}):void {
+        let active:Player = this._actors_dic[body.active];
+        if (active) {
+            if(!active.is_package_gap()) return;
+            let term:PTerm = this.term_map[body.pot.x][body.pot.y];
+            if (!term) return;
+            if (!term.res) return;
+            let index:number = active.get_package_gap();
+            let pres:PRes = term.res;
+            if (pres.next) pres.next.prev = null;
+            term.res = term.res.next;
+            active.dis_package_index(index,pres.res);
+            this.notice_all_player('onDeleteRes',{name:pres.res.name,point:body.pot});
         }
     }
 }

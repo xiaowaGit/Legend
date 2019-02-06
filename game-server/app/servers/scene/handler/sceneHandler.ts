@@ -3,6 +3,7 @@ import {Application, BackendSession} from 'pinus';
 import { FrontendSession } from 'pinus';
 import { Point } from '../base/Point';
 import { MainScene } from '../drive/MainScene';
+import { sleep } from '../../../util/tool';
 
 export default function(app: Application) {
     return new SceneHandler(app);
@@ -86,6 +87,30 @@ export class SceneHandler {
             return {error : "物品下标超出范围！"};
         }else{
             let msg = {handler:'handler_uuse_res', body:body};
+            MainScene.getInstance().push_message(msg);
+            return {ok : 200};
+        }
+    }
+
+    ///////////////获得背包数据
+    async get_bag(body:any, session: BackendSession) {
+        await sleep(200);
+        return MainScene.getInstance().get_player_bag(session.uid);
+    }
+    ///////////////获得角色数据
+    async get_info(body:any, session: BackendSession) {
+        await sleep(200);
+        return MainScene.getInstance().get_player_info(session.uid);
+    }
+
+    ///////////////拾取物品
+    async pickup(body:{pot:Point}, session: BackendSession) {
+        body['active'] = session.uid; //设置主动对象
+        if (body.pot.x < 0 || body.pot.x >= 500 ||
+            body.pot.y < 0 || body.pot.y >= 500 ) {
+            return {error : "拾取位置超出范围！"};
+        }else{
+            let msg = {handler:'handler_pickup', body:body};
             MainScene.getInstance().push_message(msg);
             return {ok : 200};
         }
