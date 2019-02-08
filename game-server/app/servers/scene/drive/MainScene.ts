@@ -218,7 +218,7 @@ export class MainScene extends Target {
 
     private handler_move_to(body:{pot:Point,target:string}):void {
         let player:Player = this._actors_dic[body.target];
-        if (player) {
+        if (player && !player.is_die) {
             player.killEffectByName('Move');
             let move:Move = new Move(body.pot,this.grid_map,player);
             player.pushEffect(move);
@@ -228,7 +228,7 @@ export class MainScene extends Target {
     private handler_attack( body:{target: string, active:string}):void {
         let target:Actor = this._actors_dic[body.target];
         let active:Actor = this._actors_dic[body.active];
-        if (target && active) {
+        if (target && active && !target.is_die && !active.is_die) {
             let attack:Attack = new Attack(active,target);
             active.pushEffect(attack);
         }
@@ -236,7 +236,7 @@ export class MainScene extends Target {
     
     private handler_use_res( body:{res_index:number, active:string}):void {
         let active:Player = this._actors_dic[body.active];
-        if (active) {
+        if (active && !active.is_die) {
             let res:Res = active.get_res_by_index(body.res_index);
             if (res) res.use(active);
         }
@@ -245,7 +245,7 @@ export class MainScene extends Target {
     private handler_uuse_res( body:{res_index:number,target:string,pot:Point, active:string}):void {
         let active:Player = this._actors_dic[body.active];
         let target:Actor = this._actors_dic[body.target];
-        if (active && target) {
+        if (active && target && !target.is_die && !active.is_die) {
             let res:Res = active.get_res_by_index(body.res_index);
             if (res.type != 'skill_book') return;
             let book:SkillBook = <SkillBook>res;
@@ -256,7 +256,7 @@ export class MainScene extends Target {
     /////拾取物品
     private handler_pickup( body:{pot:Point, active:string}):void {
         let active:Player = this._actors_dic[body.active];
-        if (active) {
+        if (active && !active.is_die) {
             if(!active.is_package_gap()) return;
             let term:PTerm = this.term_map[body.pot.x][body.pot.y];
             if (!term) return;
