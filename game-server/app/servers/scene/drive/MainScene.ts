@@ -10,6 +10,7 @@ import { Attack } from "../Effect/Attack";
 import { Res } from "../Res/Res";
 import { SkillBook } from "../Res/SkillBook";
 import { ResConfig } from "../../../util/resConfig";
+import { get_l } from "../../../util/tool";
 
 export interface PTerm {//项
     player:PActor;
@@ -76,7 +77,11 @@ export class MainScene extends Target {
         }
     }
     private manager_res():void {////管理地图资源，生成和销毁吃鸡装备
-        if (this.total_res_sum() < 100 && Math.random() > 0.9) {
+        let sum:number = this.total_res_sum();
+        let rnd = 50 - Math.ceil(Math.random() * sum);
+        rnd = Math.ceil(Math.random() * rnd);
+        rnd = Math.ceil(Math.random() * rnd);
+        if (sum < 50 && rnd > 10 && Math.random() > 0.8) {
             let res:Res = ResConfig.get_random_res();
             let x:number = Math.floor(Math.random() * 500);
             let y:number = Math.floor(Math.random() * 500);
@@ -136,7 +141,7 @@ export class MainScene extends Target {
             let ress = [];
             for (let i = 0; i < 500; i++) {
                 for (let j = 0; j < 500; j++) {
-                    let term:PTerm = this.term_map[i][j];
+                    let term:PTerm = self.term_map[i][j];
                     let pres:PRes = term.res;
                     while(pres) {
                         ress.push({name:pres.res.name,point:{x:i,y:j}});
@@ -256,7 +261,8 @@ export class MainScene extends Target {
     /////拾取物品
     private handler_pickup( body:{pot:Point, active:string}):void {
         let active:Player = this._actors_dic[body.active];
-        if (active && !active.is_die) {
+        let l:number = get_l(active.point,body.pot);
+        if (active && !active.is_die && l < 5) {
             if(!active.is_package_gap()) return;
             let term:PTerm = this.term_map[body.pot.x][body.pot.y];
             if (!term) return;

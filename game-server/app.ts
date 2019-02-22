@@ -25,6 +25,14 @@ app.configure('production|development', 'connector', function () {
         });
 });
 
+app.configure('production|development', 'gate', function () {
+    app.set('connectorConfig',
+        {
+            connector: pinus.connectors.hybridconnector,
+            // useProtobuf: true
+        });
+});
+
 // start app
 app.start();
 
