@@ -1,3 +1,7 @@
 shared
 web-server
 game-server/node_modules
+game-server/dist/app
+game-server/dist/logs
+game-server/dist/app.js
+game-server/dist/preload.js
