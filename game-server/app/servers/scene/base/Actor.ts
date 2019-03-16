@@ -44,6 +44,7 @@ export abstract class Actor extends Target {
         this._pactor.next = term.player;
         this._pactor.prev = null;
         term.player = this._pactor;
+        this.point = pot;
     }
 
     public out():void { ///从地图中跳出
@@ -151,7 +152,7 @@ export abstract class Actor extends Target {
     }
     ///获得移动一格子的间隔帧
     public getTickSpeed():number {
-        return Math.ceil((1000 - this.speed) / 100);
+        return Math.ceil((1000 - this.speed) / 50);
     }
 
     public getTarget():Actor[] {
@@ -162,6 +163,7 @@ export abstract class Actor extends Target {
         return this._scene;
     }
     
+    abstract get_info():{};
     abstract get_config_name():string;
     abstract notice_all_player(onType:string,body:Object):void;
     abstract notice_one_player(onType:string,body:Object):void;

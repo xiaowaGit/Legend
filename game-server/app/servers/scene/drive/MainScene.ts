@@ -129,11 +129,11 @@ export class MainScene extends Target {
             this.grid_map.length,this);
         this.add_actor(player);
         let self = this;
-        // this.notice_all_player("onCreate",player);
         function get_other_players() {
             let players = [];
             self._actors.forEach(element => {
-                players.push({name:element.name,point:element.point});
+                if (element.name != user_name)
+                players.push(element.get_info());
             });
             return players;
         }
@@ -151,6 +151,7 @@ export class MainScene extends Target {
             }
             return ress;
         }
+        this.notice_all_player("onCreate",player.get_info());
         return {player:player.get_info(),other_players:get_other_players(),ress:get_all_ress()};
     }
     //////获得玩家背包数据
@@ -172,7 +173,7 @@ export class MainScene extends Target {
         let player:Player = this._actors_dic[user_name];
         if (player) {
             this.remove_actor(player);
-            this.notice_all_player("onDelete",player);
+            this.notice_all_player("onDelete",player.get_info());
         }
     }
     ///移除角色
