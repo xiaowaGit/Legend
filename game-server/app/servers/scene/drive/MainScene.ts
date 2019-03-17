@@ -226,7 +226,10 @@ export class MainScene extends Target {
         let player:Player = this._actors_dic[body.target];
         if (player && !player.is_die) {
             player.killEffectByName('Move');
-            let move:Move = new Move(body.pot,this.grid_map,player);
+            let is_over:boolean = true;
+            let term:PTerm = this.term_map[body.pot.x][body.pot.y];
+            if (term.player != null) is_over = false;
+            let move:Move = new Move(body.pot,this.grid_map,player,is_over);
             player.pushEffect(move);
         }
     }

@@ -51,7 +51,7 @@ export class Player extends Actor {
         magic_attack:this.magic_attack,physics_defense:this.physics_defense,
         magic_defense:this.magic_defense,point:this.point,speed:this.speed,is_die:this.is_die};
         return {arms:arms,helmet:helmet,clothes:clothes,shoes:shoes,jewelry:jewelry,
-        necklace:necklace,player:player};
+        necklace:necklace,player:player,config_name:this.get_config_name()};
     }
     ////获得角色背包
     public get_bag():any[] {

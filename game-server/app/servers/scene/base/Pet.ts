@@ -53,7 +53,7 @@ export class Pet extends Actor {
         magic:this.magic,magic_limit:this.magic_limit,physics_attack:this.physics_attack,
         magic_attack:this.magic_attack,physics_defense:this.physics_defense,
         magic_defense:this.magic_defense,point:this.point,speed:this.speed,is_die:this.is_die};
-        return {player:player};
+        return {player:player,config_name:this.get_config_name()};
     }
     ////获得攻击CD时间
     public get_cd_time():number {

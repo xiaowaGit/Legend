@@ -21,6 +21,8 @@ export abstract class Actor extends Target {
     public is_die:boolean = false;
     private _die_time:number = null;
 
+    public pass_tick:number = 0; //行走到下一点已经经过的帧数
+
     protected _scene:MainScene = null;
     protected _pactor: PActor = null;
 

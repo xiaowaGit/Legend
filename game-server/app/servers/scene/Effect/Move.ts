@@ -56,8 +56,9 @@ export class Move implements Effect {
             self._path = path;
             let speed = this._player.getTickSpeed();
             this._speed = speed;
-            this._tick = 0;
-            this._player.notice_all_player("onMove",{path:path,speed:speed,target:this._player.name,over:this._is_over,o_pot:this._o});
+            this._tick = this._player.pass_tick;
+            let o_tick:number = this._tick >= this._speed ? 1 : this._speed - this._tick;
+            this._player.notice_all_player("onMove",{path:path,speed:speed,target:this._player.name,over:this._is_over,o_pot:this._o,o_tick:o_tick});
         }else{
             this._tick++;
             if(this._tick >= this._speed) {
@@ -67,6 +68,7 @@ export class Move implements Effect {
                  || (!this._is_over && this._ppath >= this._path.length-1) ){
                     this._is_end = true;
                     this._is_run = false;
+                    this._player.pass_tick = this._tick;
                     return
                 }else{
                     let pot:Point = this._path[this._ppath];
@@ -74,6 +76,7 @@ export class Move implements Effect {
                 }
                 this._ppath++;
             }
+            this._player.pass_tick = this._tick;
         }
     }
     is_run():Boolean {//效果是否运行中

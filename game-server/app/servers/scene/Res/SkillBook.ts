@@ -22,6 +22,7 @@ export interface SkillBookConfig {
     cd:number;//CD秒数
     effect_name:string;////产生effect的名字，没有为空串
     explain:string;////effect说明，没有就是空串
+    arms_limit:'knife'|'staff'|'stick';////释放效果的武器类型限制
     pet_config?:PetConfig;////如果是召唤宠物有此配置
     effect_config?:EffectConfig;////effect的配置
 }
@@ -52,47 +53,39 @@ export class SkillBook extends Res {
         if (this._over_time > Date.now()) return false;
         if (this._config.effect_name != "") {
             let effect_name:string = this._config.effect_name;
+            if (player.arms.get_arms_type() != this._config.arms_limit) return false;
             if (effect_name == "CallPet") {
-                if (player.arms.get_arms_type() != 'stick') return false;
                 if (player.has_type_pet(this._config.pet_config.name)) return false;
                 let effect:CallPet = new CallPet(this._config.pet_config,player);
                 player.pushEffect(effect);
             }else if (effect_name == "RagingFire") {
-                if (player.arms.get_arms_type() != 'knife') return false;
                 if (!this._target) return false;
                 let effect:RagingFire = new RagingFire(this._config.effect_config,player,this._target);
                 player.pushEffect(effect);
             }else if (effect_name == "FierceWind") {
-                if (player.arms.get_arms_type() != 'knife') return false;
                 if (!this._target) return false;
                 let effect:FierceWind = new FierceWind(this._config.effect_config,player,this._target);
                 player.pushEffect(effect);
             }else if (effect_name == "PursueSun") {
-                if (player.arms.get_arms_type() != 'knife') return false;
                 if (!this._pot || !this._dir || !this._target) return false;
                 let effect:PursueSun = new PursueSun(this._config.effect_config,player,this._target,this._dir);
                 player.pushEffect(effect);
             }else if (effect_name == "Hailstorm") {
-                if (player.arms.get_arms_type() != 'staff') return false;
                 if (!this._pot || !this._dir || !this._target) return false;
                 let effect:Hailstorm = new Hailstorm(this._config.effect_config,player,this._target,this._pot);
                 player.pushEffect(effect);
             }else if (effect_name == "MeteorSwarm") {
-                if (player.arms.get_arms_type() != 'staff') return false;
                 if (!this._pot || !this._dir || !this._target) return false;
                 let effect:MeteorSwarm = new MeteorSwarm(this._config.effect_config,player,this._target,this._pot);
                 player.pushEffect(effect);
             }else if (effect_name == "SkyFire") {
-                if (player.arms.get_arms_type() != 'staff') return false;
                 if (!this._target) return false;
                 let effect:SkyFire = new SkyFire(this._config.effect_config,player,this._target);
                 player.pushEffect(effect);
             }else if (effect_name == "Cure") {
-                if (player.arms.get_arms_type() != 'stick') return false;
                 let effect:Cure = new Cure(this._config.effect_config,player);
                 player.pushEffect(effect);
             }else if (effect_name == "Hemophagy") {
-                if (player.arms.get_arms_type() != 'stick') return false;
                 if (!this._target) return false;
                 let effect:Hemophagy = new Hemophagy(this._config.effect_config,player,this._target);
                 player.pushEffect(effect);
