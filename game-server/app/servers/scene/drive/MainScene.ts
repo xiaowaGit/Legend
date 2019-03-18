@@ -214,6 +214,7 @@ export class MainScene extends Target {
     }
 
     public Destructor():void {// 程序退出，清理场景
+        this._tick_timer.unref();
         clearInterval(this._tick_timer);
         this._channel = null;
         this._channelService = null;

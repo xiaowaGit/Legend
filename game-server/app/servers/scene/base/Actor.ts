@@ -22,6 +22,8 @@ export abstract class Actor extends Target {
     private _die_time:number = null;
 
     public pass_tick:number = 0; //行走到下一点已经经过的帧数
+    public attack_cd:number = 1; //攻击cd 秒数
+    public attack_over_time:number = Date.now();
 
     protected _scene:MainScene = null;
     protected _pactor: PActor = null;

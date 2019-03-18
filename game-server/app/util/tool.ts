@@ -13,5 +13,5 @@ export function get_l(pot1:Point,pot2:Point):number {
 }
 
 export function sleep(ms) {
-    return new Promise(resolve => setTimeout(resolve, ms))
+    return new Promise(resolve => setTimeout(resolve, ms));
 }

@@ -38,6 +38,7 @@ export class Attack implements Effect {
     }
 
     run(): void {
+        if (this._active.attack_over_time > Date.now()) return;
         let pot1:Point = this._active.point;
         let pot2:Point = this._target.point;
         let l:number = get_l(pot1,pot2);
@@ -47,7 +48,8 @@ export class Attack implements Effect {
         let hurt:number = Attack.getHurt(physics_attack,physics_defense);
         this._target.blood -= hurt;
         this._active.killEffectByName('Move');
-        this._active.notice_all_player('onAttack',{active:this._active.name,target:this._target.name});
+        this._active.notice_all_player('onAttack',{active:this._active.name,target:this._target.name,e_pot:this._target.point});
+        this._active.attack_over_time = Date.now() + this._active.attack_cd;
     }
     
     is_run(): Boolean {
