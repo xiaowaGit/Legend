@@ -11,6 +11,7 @@ import { Res } from "../Res/Res";
 import { SkillBook } from "../Res/SkillBook";
 import { ResConfig } from "../../../util/resConfig";
 import { get_l } from "../../../util/tool";
+import A_star_pathfinder from "../../../util/pathFinding";
 
 export interface PTerm {//项
     player:PActor;
@@ -39,6 +40,7 @@ export class MainScene extends Target {
     private _actors:Actor[] = [];
     public grid_map:number[][] = [];
     public term_map:PTerm[][] = [];
+    public pathFind: A_star_pathfinder;
     private _tick_timer:NodeJS.Timer = null;
     private _channelService: ChannelService;
     private _channel: Channel;
@@ -55,6 +57,9 @@ export class MainScene extends Target {
                 this.term_map[i][j] = {player:null,res:null};
             }
         }
+        let pathFind = new A_star_pathfinder();
+        this.pathFind = pathFind;
+        this.pathFind.init(this.grid_map);
     }
 
     public push_message(msg:Message):void {
@@ -230,7 +235,7 @@ export class MainScene extends Target {
             let is_over:boolean = true;
             let term:PTerm = this.term_map[body.pot.x][body.pot.y];
             if (term.player != null) is_over = false;
-            let move:Move = new Move(body.pot,this.grid_map,player,is_over);
+            let move:Move = new Move(body.pot,this.pathFind,player,is_over);
             player.pushEffect(move);
         }
     }

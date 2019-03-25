@@ -6,6 +6,7 @@ import { MainScene } from "../drive/MainScene";
 import { Actor } from "../base/Actor";
 import { Attack } from "./Attack";
 import { Move } from "./Move";
+import a_star_pathfind from "../../../util/pathFinding";
 
 /*
     宠物AI
@@ -57,8 +58,8 @@ export class MonsterAI implements Effect {
                             pet.pushEffect(attack);
                             this._stop_time = Date.now() + this._cd_time;
                         }else{
-                            let grid_map:number[][] = scene.grid_map;
-                            let effect:Move = new Move(attack_target.point,grid_map,pet,false);
+                            let pathFind:a_star_pathfind = scene.pathFind;
+                            let effect:Move = new Move(attack_target.point,pathFind,pet,false);
                             pet.pushEffect(effect);
                         }
                     }
@@ -66,8 +67,8 @@ export class MonsterAI implements Effect {
             }else{
                 let l:number = pet.get_player_l();
                 if (l > 8) {
-                    let grid_map:number[][] = scene.grid_map;
-                    let effect:Move = new Move(player.point,grid_map,pet,false);
+                    let pathFind:a_star_pathfind = scene.pathFind;
+                    let effect:Move = new Move(player.point,pathFind,pet,false);
                     pet.pushEffect(effect);
                 }
             }

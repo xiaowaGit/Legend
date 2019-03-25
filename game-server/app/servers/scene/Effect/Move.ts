@@ -12,10 +12,9 @@ export class Move implements Effect {
 
     private _to:Point = null;
     private _active:Target = null;
-    private _map:number[][] = null;
+    private _pathFind: A_star_pathfinder;
     private _player:Actor = null;
     private _o:Point = null;
-    private _pathFind: A_star_pathfinder;
     private _is_run:Boolean = false;
     private _path:Point[];
     private _tick:number = 0;
@@ -24,15 +23,12 @@ export class Move implements Effect {
     private _is_end: boolean;
     private _is_over:boolean;///是否走到终点，否则走到终点的前一点
 
-    constructor(to:Point,map:number[][],active:Target,is_over:boolean = true) {
+    constructor(to:Point,pathFind:A_star_pathfinder,active:Target,is_over:boolean = true) {
         this._to = to;
         this._active = active;
-        this._map = map;
         this._player = active.getTarget()[0];
         this._o = this._player.point;
         this._is_over = is_over;
-        
-        let pathFind = new A_star_pathfinder();
         this._pathFind = pathFind;
         this._is_end = false;
     }
@@ -51,7 +47,6 @@ export class Move implements Effect {
         if(!this.is_run()) {
             this._is_run = true;
             let self = this;
-            self._pathFind.init(this._map);
             let path = self._pathFind.findPath(self._o.x,self._o.y,self._to.x,self._to.y);
             self._path = path;
             let speed = this._player.getTickSpeed();
