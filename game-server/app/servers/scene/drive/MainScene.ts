@@ -92,7 +92,7 @@ export class MainScene extends Target {
             let y:number = Math.floor(Math.random() * 500);
             let pot:Point = {x:x,y:y};
             this.res_move_to(pot,res);
-            this.notice_all_player('onCreateRes',{name:res.name,point:pot});
+            this.notice_all_player('onCreateRes',{name:res.name,point:pot,index:res.index});
         }
     }
     ///////放置物品到指定位置
@@ -149,7 +149,7 @@ export class MainScene extends Target {
                     let term:PTerm = self.term_map[i][j];
                     let pres:PRes = term.res;
                     while(pres) {
-                        ress.push({name:pres.res.name,point:{x:i,y:j}});
+                        ress.push({name:pres.res.name,point:{x:i,y:j},index:pres.res.index});
                         pres = pres.next;
                     }
                 }
@@ -282,7 +282,7 @@ export class MainScene extends Target {
             if (pres.next) pres.next.prev = null;
             term.res = term.res.next;
             active.dis_package_index(index,pres.res);
-            this.notice_all_player('onDeleteRes',{name:pres.res.name,point:body.pot});
+            this.notice_all_player('onDeleteRes',{name:pres.res.name,point:body.pot,index:pres.res.index});
         }
     }
 }
