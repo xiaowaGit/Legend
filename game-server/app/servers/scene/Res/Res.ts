@@ -2,6 +2,7 @@ import { Player } from "../base/Player";
 
 export interface ResInfo {
     name:string;
+    index:number;
     type:'equipment'|'drug'|'skill_book';
     config:{};
 }
@@ -34,6 +35,6 @@ export abstract class Res {
     abstract get_config():{};
 
     public get_res_info():ResInfo {
-        return {name:this.name,type:this.type,config:this.get_config()}
+        return {name:this.name,type:this.type,config:this.get_config(),index:this.index}
     }
 }
