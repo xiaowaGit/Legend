@@ -2,7 +2,7 @@ import { Actor } from "./Actor";
 import { MainScene, PTerm } from "../drive/MainScene";
 import { PActor } from "./PActor";
 import { Arms } from "../Res/Arms";
-import { Res } from "../Res/Res";
+import { Res, ResInfo } from "../Res/Res";
 import { Helmet } from "../Res/Helmet";
 import { Clothes } from "../Res/Clothes";
 import { Shoes } from "../Res/Shoes";
@@ -54,11 +54,12 @@ export class Player extends Actor {
         necklace:necklace,player:player,config_name:this.get_config_name()};
     }
     ////获得角色背包
-    public get_bag():any[] {
-        let bag = [];
-        for (let index = 0; index < 20; index++) {
+    public get_bag():ResInfo[] {
+        let bag:ResInfo[] = [];
+        for (let index = 0; index < 18; index++) {
             const element = this._ress[index];
-            bag[index] = element.get_res_info();
+            if (element)bag[index] = element.get_res_info();
+            else bag[index] = null;
         }
         return bag;
     }
@@ -95,7 +96,7 @@ export class Player extends Actor {
     }
     /////包裹是否有空位
     public is_package_gap():Boolean {
-        for (let index = 0; index < 20; index++) {
+        for (let index = 0; index < 18; index++) {
             const element = this._ress[index];
             if (element == null) return true;
         }
@@ -104,7 +105,7 @@ export class Player extends Actor {
 
     /////获得包裹的一个空位
     public get_package_gap():number {
-        for (let index = 0; index < 20; index++) {
+        for (let index = 0; index < 18; index++) {
             const element = this._ress[index];
             if (element == null) return index;
         }
@@ -112,7 +113,7 @@ export class Player extends Actor {
     }
     ///向包裹指定位置放置物品
     public dis_package_index(index:number,res:Res):boolean {
-        if (index >= 20 || index < 0)return false;
+        if (index >= 18 || index < 0)return false;
         if (this._ress[index]) return false;
         this._ress[index] = res;
         return true;
@@ -131,7 +132,7 @@ export class Player extends Actor {
     }
     ////从包囊中发现物品
     public find_package_obj(res:Res):number {
-        for (let index = 0; index < 20; index++) {
+        for (let index = 0; index < 18; index++) {
             const element:Res = this._ress[index];
             if (element == res) return index;
         }

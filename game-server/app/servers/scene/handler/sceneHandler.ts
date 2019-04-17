@@ -94,12 +94,10 @@ export class SceneHandler {
 
     ///////////////获得背包数据
     async get_bag(body:any, session: BackendSession) {
-        await sleep(200);
         return MainScene.getInstance().get_player_bag(session.uid);
     }
     ///////////////获得角色数据
     async get_info(body:any, session: BackendSession) {
-        await sleep(200);
         return MainScene.getInstance().get_player_info(session.uid);
     }
 
