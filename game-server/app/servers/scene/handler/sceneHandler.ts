@@ -71,7 +71,7 @@ export class SceneHandler {
     /////使用物品
     async use_res(body:{res_index:number}, session: BackendSession) {
         body['active'] = session.uid; //设置主动对象
-        if (body.res_index < 0 ||  body.res_index >= 20 ) {
+        if (body.res_index < 0 ||  body.res_index >= 18 ) {
             return {error : "物品下标超出范围！"};
         }else{
             let msg = {handler:'handler_use_res', body:body};
@@ -83,10 +83,22 @@ export class SceneHandler {
     /////使用技能
     async uuse_res(body:{res_index:number,target:string,pot:Point}, session: BackendSession) {
         body['active'] = session.uid; //设置主动对象
-        if (body.res_index < 0 ||  body.res_index >= 20 ) {
+        if (body.res_index < 0 ||  body.res_index >= 18 ) {
             return {error : "物品下标超出范围！"};
         }else{
             let msg = {handler:'handler_uuse_res', body:body};
+            MainScene.getInstance().push_message(msg);
+            return {ok : 200};
+        }
+    }
+
+    ///////////////交换物品位置
+    async exchange_res(body:{o_index:number,e_index:number}, session: BackendSession) {
+        body['active'] = session.uid; //设置主动对象
+        if (body.o_index < 0 ||  body.o_index >= 18 || body.e_index < 0 ||  body.e_index >= 18) {
+            return {error : "物品下标超出范围！"};
+        }else{
+            let msg = {handler:'handler_exchange_res', body:body};
             MainScene.getInstance().push_message(msg);
             return {ok : 200};
         }

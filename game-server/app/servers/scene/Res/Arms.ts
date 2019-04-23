@@ -29,7 +29,7 @@ export class Arms extends EquipmentRes {
         if (player.blood_limit < this._config.has_blood || player.magic_limit < this._config.has_magic) return false;
         if(player.un_arms()) {
             let index = player.find_package_obj(this);
-            if (!index) {
+            if (index === null) {
                 return false;
             }else{
                 player.out_package_index(index);

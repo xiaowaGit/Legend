@@ -285,4 +285,15 @@ export class MainScene extends Target {
             this.notice_all_player('onDeleteRes',{name:pres.res.name,point:body.pot,index:pres.res.index});
         }
     }
+
+    /////交换物品
+    private handler_exchange_res( body:{o_index:number,e_index:number,active:string}):void {
+        let active:Player = this._actors_dic[body.active];
+        if (active && !active.is_die) {
+            let o_res = active.out_package_index(body.o_index);
+            let e_res = active.out_package_index(body.e_index);
+            if(o_res)active.dis_package_index(body.e_index,o_res);
+            if(e_res)active.dis_package_index(body.o_index,e_res);
+        }
+    }
 }

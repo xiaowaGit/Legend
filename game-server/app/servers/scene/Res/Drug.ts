@@ -28,7 +28,7 @@ export class Drug extends Res {
     /////使用物品
     public use(player:Player):Boolean {
         let index:number = player.find_package_obj(this);
-        if (!index) return false;
+        if (index === null) return false;
         if (this._config.effect_name != "") {
             let effect_name:string = this._config.effect_name;
             if (effect_name == "CallPet") {

@@ -28,7 +28,7 @@ export class Clothes extends EquipmentRes {
         if (player.physics_attack < this._config.has_physics_attack || player.magic_attack < this._config.has_magic_attack) return false;
         if(player.un_clothes()) {
             let index = player.find_package_obj(this);
-            if (!index) {
+            if (index === null) {
                 return false;
             }else{
                 player.out_package_index(index);
