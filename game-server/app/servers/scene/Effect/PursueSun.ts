@@ -40,7 +40,7 @@ export class PursueSun implements Effect {
        3 dir 7
        2  1  8
     */
-    public static select_grid(pot:Point,grid_map:number[][],dir:number):Point[] {
+    public static select_grid(pot:Point,grid_map:number[][],dir:number,config:EffectConfig):Point[] {
         if (dir < 1 || dir > 8) throw new Error("select_grid dir error");
         function select(pot:Point,grid_map:number[][],ax:number,ay:number):Point {
             let pott:Point = {x:pot.x + ax,y:pot.y + ay}
@@ -63,7 +63,7 @@ export class PursueSun implements Effect {
         while (pot_next) {
             ret.push(pot_next);
             limit++;
-            if (limit > 4) break;
+            if (limit > config.attack_l) break;
             pot_next = select(pot_next,grid_map,ax,ay);
         }
         return ret;
@@ -76,7 +76,7 @@ export class PursueSun implements Effect {
         this._active.notice_all_player('onPursueSun',
         {active:this._active.name,
         dir:this._dir});
-        let pots:Point[] = PursueSun.select_grid(pot1,scene.grid_map,this._dir);
+        let pots:Point[] = PursueSun.select_grid(pot1,scene.grid_map,this._dir,this._config);
         pots.forEach(element => {
             let term:PTerm = scene.term_map[element.x][element.y];
             let p:PActor = term.player;

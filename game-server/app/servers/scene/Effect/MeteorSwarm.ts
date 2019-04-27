@@ -43,7 +43,7 @@ export class MeteorSwarm implements Effect {
         targets.forEach(element => {
             let pot1:Point = this._tpot;
             let pot2:Point = element.point;
-            if (get_l(pot1,pot2) < 6 && element != active) {
+            if (get_l(pot1,pot2) < this._config.range_l && element != active) {
                 let magic_attack:number = active.magic_attack;
                 let magic_defense:number = element.magic_defense;
                 let hurt:number = MeteorSwarm.getHurt(magic_attack,magic_defense);

@@ -20,6 +20,7 @@ export interface EffectConfig {
     minus_one_physics_defense?:number;////单次物理防御减少
     minus_one_magic_defense?:number;/////单次魔法防御减少
     attack_l:number;////效果攻击距离
+    range_l:number;////效果攻击范围
     type:'attack'|'assist'|'hinder';//效果类型（攻击、辅助、障碍）
 }
 

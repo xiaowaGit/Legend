@@ -38,7 +38,7 @@ export class FierceWind implements Effect {
         targets.forEach(element => {
             let pot1:Point = active.point;
             let pot2:Point = element.point;
-            if (get_l(pot1,pot2) < 3 && element != active) {
+            if (get_l(pot1,pot2) < this._config.attack_l && element != active) {
                 let physics_attack:number = active.physics_attack;
                 let physics_defense:number = element.physics_defense;
                 let hurt:number = FierceWind.getHurt(physics_attack,physics_defense);
