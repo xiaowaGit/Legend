@@ -150,84 +150,85 @@ export class ResConfig {
     ////////////获得一个随机物品（生成随机物品）
     public static get_random_res():Res {
         let rnd:number = Math.ceil(Math.random()*10);
+        // rnd = 10;
         if (rnd == 1) {
             let arms_knife_list:ArmsConfig[] = ResConfig.arms_knife_list;
             rnd = Math.floor(Math.random() * arms_knife_list.length);
-            rnd = Math.floor(Math.random() * (rnd + 1));
-            rnd = Math.floor(Math.random() * (rnd + 1));
-            rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
             let arms_config:ArmsConfig = arms_knife_list[rnd];
             return new Arms(arms_config);
         }else if (rnd == 2) {
             let arms_staff_list:ArmsConfig[] = ResConfig.arms_staff_list;
             rnd = Math.floor(Math.random() * arms_staff_list.length);
-            rnd = Math.floor(Math.random() * (rnd + 1));
-            rnd = Math.floor(Math.random() * (rnd + 1));
-            rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
             let arms_config:ArmsConfig = arms_staff_list[rnd];
             return new Arms(arms_config);
         }else if (rnd == 3) {
             let arms_stick_list:ArmsConfig[] = ResConfig.arms_stick_list;
             rnd = Math.floor(Math.random() * arms_stick_list.length);
-            rnd = Math.floor(Math.random() * (rnd + 1));
-            rnd = Math.floor(Math.random() * (rnd + 1));
-            rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
             let arms_config:ArmsConfig = arms_stick_list[rnd];
             return new Arms(arms_config);
         }else if (rnd == 4) {
             let clothes_list:ClothesConfig[] = ResConfig.clothes_list;
             rnd = Math.floor(Math.random() * clothes_list.length);
-            rnd = Math.floor(Math.random() * (rnd + 1));
-            rnd = Math.floor(Math.random() * (rnd + 1));
-            rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
             let config:ClothesConfig = clothes_list[rnd];
             return new Clothes(config);
         }else if (rnd == 5) {
             let helmet_list:HelmetConfig[] = ResConfig.helmet_list;
             rnd = Math.floor(Math.random() * helmet_list.length);
-            rnd = Math.floor(Math.random() * (rnd + 1));
-            rnd = Math.floor(Math.random() * (rnd + 1));
-            rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
             let config:HelmetConfig = helmet_list[rnd];
             return new Helmet(config);
         }else if (rnd == 6) {
             let jewelry_list:JewelryConfig[] = ResConfig.jewelry_list;
             rnd = Math.floor(Math.random() * jewelry_list.length);
-            rnd = Math.floor(Math.random() * (rnd + 1));
-            rnd = Math.floor(Math.random() * (rnd + 1));
-            rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
             let config:JewelryConfig = jewelry_list[rnd];
             return new Jewelry(config);
         }else if (rnd == 7) {
             let necklace_list:NecklaceConfig[] = ResConfig.necklace_list;
             rnd = Math.floor(Math.random() * necklace_list.length);
-            rnd = Math.floor(Math.random() * (rnd + 1));
-            rnd = Math.floor(Math.random() * (rnd + 1));
-            rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
             let config:NecklaceConfig = necklace_list[rnd];
             return new Necklace(config);
         }else if (rnd == 8) {
             let  shoes_list:ShoesConfig[] = ResConfig.shoes_list;
             rnd = Math.floor(Math.random() * shoes_list.length);
-            rnd = Math.floor(Math.random() * (rnd + 1));
-            rnd = Math.floor(Math.random() * (rnd + 1));
-            rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
             let config:ShoesConfig = shoes_list[rnd];
             return new Shoes(config);
         }else if (rnd == 9) {
             let  drug_list:DrugConfig[] = ResConfig.drug_list;
             rnd = Math.floor(Math.random() * drug_list.length);
-            rnd = Math.floor(Math.random() * (rnd + 1));
-            rnd = Math.floor(Math.random() * (rnd + 1));
-            rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
             let config:DrugConfig = drug_list[rnd];
             return new Drug(config);
         }else if (rnd == 10) {
             let  skillBook_list:SkillBookConfig[] = ResConfig.skillBook_list;
             rnd = Math.floor(Math.random() * skillBook_list.length);
-            rnd = Math.floor(Math.random() * (rnd + 1));
-            rnd = Math.floor(Math.random() * (rnd + 1));
-            rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
+            // rnd = Math.floor(Math.random() * (rnd + 1));
             let config:SkillBookConfig = skillBook_list[rnd];
             return new SkillBook(config);
         }

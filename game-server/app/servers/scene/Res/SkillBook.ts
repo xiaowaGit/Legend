@@ -13,6 +13,7 @@ import { MeteorSwarm } from "../Effect/MeteorSwarm";
 import { SkyFire } from "../Effect/SkyFire";
 import { Cure } from "../Effect/Cure";
 import { Hemophagy } from "../Effect/Hemophagy";
+import { Target } from "../base/Target";
 
 export interface SkillBookConfig {
     name:string;
@@ -37,7 +38,7 @@ export class SkillBook extends Res {
 
     private _pot:Point = null;
     private _dir:number = null;
-    private _target:Actor = null;
+    private _target:Target = null;
 
     constructor(config:SkillBookConfig) {
         super(config.name,Res.SKILL_BOOK_TYPE)
@@ -60,7 +61,7 @@ export class SkillBook extends Res {
                 player.pushEffect(effect);
             }else if (effect_name == "RagingFire") {
                 if (!this._target) return false;
-                let effect:RagingFire = new RagingFire(this._config.effect_config,player,this._target);
+                let effect:RagingFire = new RagingFire(this._config.effect_config,player,<Actor>this._target);
                 player.pushEffect(effect);
             }else if (effect_name == "FierceWind") {
                 if (!this._target) return false;
@@ -80,14 +81,14 @@ export class SkillBook extends Res {
                 player.pushEffect(effect);
             }else if (effect_name == "SkyFire") {
                 if (!this._target) return false;
-                let effect:SkyFire = new SkyFire(this._config.effect_config,player,this._target);
+                let effect:SkyFire = new SkyFire(this._config.effect_config,player,<Actor>this._target);
                 player.pushEffect(effect);
             }else if (effect_name == "Cure") {
                 let effect:Cure = new Cure(this._config.effect_config,player);
                 player.pushEffect(effect);
             }else if (effect_name == "Hemophagy") {
                 if (!this._target) return false;
-                let effect:Hemophagy = new Hemophagy(this._config.effect_config,player,this._target);
+                let effect:Hemophagy = new Hemophagy(this._config.effect_config,player,<Actor>this._target);
                 player.pushEffect(effect);
             }
         }
@@ -98,7 +99,7 @@ export class SkillBook extends Res {
         return true;
     }
     ////技能书的使用应该使用这个函数
-    public uuse(active:Player,target:Actor,pot:Point):Boolean {
+    public uuse(active:Player,target:Target,pot:Point):Boolean {
         this.set_pot(pot,active);
         this._target = target;
         return this.use(active);

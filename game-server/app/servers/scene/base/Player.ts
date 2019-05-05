@@ -9,6 +9,8 @@ import { Shoes } from "../Res/Shoes";
 import { Jewelry } from "../Res/Jewelry";
 import { Necklace } from "../Res/Necklace";
 import { Pet } from "./Pet";
+import { ResConfig } from "../../../util/resConfig";
+import { SkillBook } from "../Res/SkillBook";
 
 /*
      角色类
@@ -37,6 +39,21 @@ export class Player extends Actor {
         this.necklace = null;
         this._ress = [];
         this._pets = [];
+        //____T:
+        this.test_fun();
+    }
+    // 测试函数
+    public test_fun() {
+        let books = ResConfig.skillBook_list;
+        books.forEach(element => {
+            this._ress.push(new SkillBook(element));
+        });
+        let arms1 = ResConfig.arms_knife_list[0];
+        this._ress.push(new Arms(arms1));
+        let arms2 = ResConfig.arms_staff_list[0];
+        this._ress.push(new Arms(arms2));
+        let arms3 = ResConfig.arms_stick_list[0];
+        this._ress.push(new Arms(arms3));
     }
     /////获得角色信息
     public get_info():{} {

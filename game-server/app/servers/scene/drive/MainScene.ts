@@ -8,10 +8,11 @@ import { Point } from "../base/Point";
 import { Move } from "../Effect/Move";
 import { Attack } from "../Effect/Attack";
 import { Res } from "../Res/Res";
-import { SkillBook } from "../Res/SkillBook";
+import { SkillBook,SkillBookConfig } from "../Res/SkillBook";
 import { ResConfig } from "../../../util/resConfig";
 import { get_l } from "../../../util/tool";
 import A_star_pathfinder from "../../../util/pathFinding";
+import { EffectConfig } from "../base/Effect";
 
 export interface PTerm {//项
     player:PActor;
@@ -260,11 +261,18 @@ export class MainScene extends Target {
     private handler_uuse_res( body:{res_index:number,target:string,pot:Point, active:string}):void {
         let active:Player = this._actors_dic[body.active];
         let target:Actor = this._actors_dic[body.target];
-        if (active && target && !target.is_die && !active.is_die) {
+        if (active && !active.is_die) {
             let res:Res = active.get_res_by_index(body.res_index);
             if (res.type != 'skill_book') return;
             let book:SkillBook = <SkillBook>res;
-            book.uuse(active,target,body.pot);
+            let skill_config:SkillBookConfig = <SkillBookConfig>book.get_config();
+            let effect_name:string = skill_config.effect_name;
+            if (effect_name == "RagingFire" || effect_name == "SkyFire" || effect_name == "Hemophagy") {//单体技能
+                if (!target || target.is_die) return;
+                book.uuse(active,target,body.pot);
+            }else{// 全体技能
+                book.uuse(active,this,body.pot);
+            }
         }
     }
 
