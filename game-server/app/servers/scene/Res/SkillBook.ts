@@ -54,7 +54,7 @@ export class SkillBook extends Res {
         if (this._over_time > Date.now()) return false;
         if (this._config.effect_name != "") {
             let effect_name:string = this._config.effect_name;
-            if (player.arms.get_arms_type() != this._config.arms_limit) return false;
+            if (!player.arms || player.arms.get_arms_type() != this._config.arms_limit) return false;
             if (effect_name == "CallPet") {
                 if (player.has_type_pet(this._config.pet_config.name)) return false;
                 let effect:CallPet = new CallPet(this._config.pet_config,player);
