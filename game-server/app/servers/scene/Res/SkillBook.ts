@@ -100,7 +100,7 @@ export class SkillBook extends Res {
     }
     ////技能书的使用应该使用这个函数
     public uuse(active:Player,target:Target,pot:Point):Boolean {
-        this.set_pot(pot,active);
+        if (pot)this.set_pot(pot,active);
         this._target = target;
         return this.use(active);
     }
