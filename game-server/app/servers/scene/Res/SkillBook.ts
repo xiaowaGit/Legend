@@ -49,7 +49,7 @@ export class SkillBook extends Res {
     /////使用物品
     public use(player:Player):Boolean {
         let index:number = player.find_package_obj(this);
-        if (!index) return false;
+        if (index == null) return false;
         if (player.magic < this._config.consume_magic) return false;
         if (this._over_time > Date.now()) return false;
         if (this._config.effect_name != "") {

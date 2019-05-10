@@ -131,7 +131,7 @@ export class ResConfig {
     ]
 
     public static  skillBook_list:SkillBookConfig[] = [////////////技能书
-        {name:'烈火',blood:0,magic:0,consume_magic:0,cd:2,effect_name:'RagingFire',explain:'烈火',arms_limit:"knife"},
+        {name:'烈火',blood:0,magic:0,consume_magic:0,cd:2,effect_name:'RagingFire',explain:'烈火',arms_limit:"knife",effect_config:{name:'烈火',attack_l:1,range_l:1,type:'attack'}},
         {name:'狂风斩',blood:0,magic:0,consume_magic:0,cd:2,effect_name:'FierceWind',explain:'狂风斩',arms_limit:"knife",effect_config:{name:'狂风斩',attack_l:3,range_l:3,type:'attack'}},
         {name:'逐日剑法',blood:0,magic:0,consume_magic:0,cd:2,effect_name:'PursueSun',explain:'逐日剑法',arms_limit:"knife",effect_config:{name:'逐日剑法',attack_l:4,range_l:4,type:'attack'}},
         {name:'冰咆哮',blood:0,magic:0,consume_magic:0,cd:3,effect_name:'Hailstorm',explain:'冰咆哮',arms_limit:"staff",effect_config:{name:'冰咆哮',attack_l:13,range_l:5,type:'attack'}},

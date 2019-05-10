@@ -54,6 +54,10 @@ export class Player extends Actor {
         this._ress.push(new Arms(arms2));
         let arms3 = ResConfig.arms_stick_list[0];
         this._ress.push(new Arms(arms3));
+        let clothes1 = ResConfig.clothes_list[0];
+        this._ress.push(new Clothes(clothes1));
+        let clothes2 = ResConfig.clothes_list[1];
+        this._ress.push(new Clothes(clothes2));
     }
     /////获得角色信息
     public get_info():{} {
