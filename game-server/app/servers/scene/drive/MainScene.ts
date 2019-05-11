@@ -138,8 +138,7 @@ export class MainScene extends Target {
         function get_other_players() {
             let players = [];
             self._actors.forEach(element => {
-                if (element.name != user_name)
-                players.push(element.get_info());
+                if (element.name != user_name) players.push(element.get_info());
             });
             return players;
         }
