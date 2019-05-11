@@ -36,6 +36,7 @@ export class Arms extends EquipmentRes {
                 player.physics_attack += this._config.physics_attack;
                 player.magic_attack += this._config.magic_attack;
                 player.arms = this;
+                player.notice_all_player("onUpdate",player.get_info());
                 return true;
             }
         }else {

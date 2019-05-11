@@ -37,6 +37,7 @@ export class Clothes extends EquipmentRes {
                 player.physics_defense += this._config.physics_defense;
                 player.magic_defense += this._config.magic_defense;
                 player.clothes = this;
+                player.notice_all_player("onUpdate",player.get_info());
                 return true;
             }
         }else {
