@@ -102,7 +102,7 @@ export class Player extends Actor {
     public remove_pet(pet:Pet):void {
         let index:number = this.find_pet_obj(pet);
         if (index == null) return;
-        if (index) this._pets.splice(index,1);
+        this._pets.splice(index,1);
     }
     //////发现pet
     public find_pet_obj(pet:Pet):number {
