@@ -86,10 +86,11 @@ export class Player extends Actor {
     }
     /////是否存在某个类型的宠物
     public has_type_pet(config_name:string):boolean {
+        let ret = false;
         this._pets.forEach(element => {
-            if (element.get_config_name() == config_name) return true;
+            if (element.get_config_name() == config_name) ret = true;
         });
-        return false;
+        return ret;
     }
     ////添加一个宠物
     public add_pet(pet:Pet):boolean {
@@ -100,7 +101,7 @@ export class Player extends Actor {
     //////移除一个宠物
     public remove_pet(pet:Pet):void {
         let index:number = this.find_pet_obj(pet);
-        if (!index) return;
+        if (index == null) return;
         if (index) this._pets.splice(index,1);
     }
     //////发现pet
@@ -110,6 +111,15 @@ export class Player extends Actor {
             if (element == pet) return index;
         }
         return null;
+    }
+    /**
+     * 所有宠物设置目标
+     * @param target 
+     */
+    public set_pet_target(target:Actor) {
+        this._pets.forEach(element => {
+            element.set_attack_target(target);
+        });
     }
     /////获得指定位置的物品
     public get_res_by_index(index:number):Res {

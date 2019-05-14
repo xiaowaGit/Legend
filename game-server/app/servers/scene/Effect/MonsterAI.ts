@@ -7,6 +7,7 @@ import { Actor } from "../base/Actor";
 import { Attack } from "./Attack";
 import { Move } from "./Move";
 import a_star_pathfind from "../../../util/pathFinding";
+import { Point } from "../base/Point";
 
 /*
     宠物AI
@@ -22,8 +23,8 @@ export class MonsterAI implements Effect {
 
     constructor(active:Pet) {
         this._target = active;
-        this._life_time = active.get_life_time();
-        this._cd_time = active.get_cd_time();
+        this._life_time = active.get_life_time() * 1000;
+        this._cd_time = active.get_cd_time() * 1000;
     }
 
     getName(): string {
@@ -40,12 +41,14 @@ export class MonsterAI implements Effect {
         let pet:Pet = this._target;
         let player:Player = pet.get_player();
         let scene:MainScene = player.get_scene();
-        if (this._create_time + this._life_time > Date.now()) {///超过存活期
+        if (this._create_time + this._life_time < Date.now()) {///超过存活期
             player.remove_pet(pet);
             scene.remove_actor(pet);
+            player.notice_all_player("onDelete",pet.get_info());
         }else{
+            let player_l:number = pet.get_player_l();
             let attack_target:Actor = pet.get_attack_target();
-            if (attack_target) {
+            if (attack_target && player_l < 15) {
                 if (attack_target.is_die) {
                     pet.set_attack_target(null);
                     return;
@@ -65,6 +68,8 @@ export class MonsterAI implements Effect {
                     }
                 }
             }else{
+                if(pet.hasEffect('Move')) return;
+                pet.set_attack_target(null);
                 let l:number = pet.get_player_l();
                 if (l > 8) {
                     let pathFind:a_star_pathfind = scene.pathFind;

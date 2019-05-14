@@ -31,7 +31,7 @@ export class SkyFire implements Effect {
     run(): void {
         if (get_l(this._active.point,this._target.point) > this._config.attack_l) return;///攻击有效范围
         this._active.killEffectByName('Move');
-        this._active.notice_all_player('onRagingFire',
+        this._active.notice_all_player('onSkyFire',
         {active:this._active.name,
         target:this._target.name});
         let active:Actor = this._active;

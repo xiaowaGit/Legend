@@ -24,7 +24,24 @@
             "port": 10001,
             "localRoot": "${workspaceFolder}",
             "remoteRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Attach to Scene",
+            "address": "127.0.0.1",
+            "port": 10002,
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": "${workspaceFolder}"
+        },
+        {
+            "type": "node",
+            "request": "attach",
+            "name": "Attach to Gate",
+            "address": "127.0.0.1",
+            "port": 10003,
+            "localRoot": "${workspaceFolder}",
+            "remoteRoot": "${workspaceFolder}"
         }
-
     ]
 }

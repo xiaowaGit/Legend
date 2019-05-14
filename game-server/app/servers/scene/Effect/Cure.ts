@@ -52,8 +52,7 @@ export class Cure implements Effect {
                 this._target.notice_all_player('onCure_Add',{
                     active:this._target.name,
                     blood:this._target.blood,
-                    magic:this._target.magic,
-                    config:this._config});
+                    magic:this._target.magic,});
             }
         }
     }

@@ -246,6 +246,8 @@ export class MainScene extends Target {
         if (target && active && !target.is_die && !active.is_die) {
             let attack:Attack = new Attack(active,target);
             active.pushEffect(attack);
+            let player:Player = <Player>active;
+            player.set_pet_target(target);
         }
     }
     
@@ -269,6 +271,9 @@ export class MainScene extends Target {
             if (effect_name == "RagingFire" || effect_name == "SkyFire" || effect_name == "Hemophagy") {//单体技能
                 if (!target || target.is_die) return;
                 book.uuse(active,target,body.pot);
+                
+                let player:Player = active;
+                player.set_pet_target(target);
             }else{// 全体技能
                 book.uuse(active,this,body.pot);
             }

@@ -22,10 +22,11 @@ export abstract class Target {
     }
     ////是否有某个效果了
     public hasEffect(effect_name:string):boolean {
+        let ret = false;
         this._effect_stack.forEach(element => {
-            if (element.getName() == effect_name) return true;
+            if (element.getName() == effect_name) ret = true;
         });
-        return false;
+        return ret;
     }
 
     public pushEffect(e:Effect):void {

@@ -140,8 +140,8 @@ export class ResConfig {
         {name:'噬血术',blood:0,magic:0,consume_magic:0,cd:4,effect_name:'Hemophagy',explain:'噬血术',arms_limit:'stick',effect_config:{name:'噬血术',attack_l:19,range_l:1,type:'attack'}},
         {name:'治愈术',blood:0,magic:0,consume_magic:0,cd:4,effect_name:'Cure',explain:'治愈术',arms_limit:'stick',effect_config:{name:'治愈术',attack_l:1,range_l:1,type:'assist',continue_time:100,add_continue_blood:20,add_continue_magic:0}},
         {name:'灵引符',blood:0,magic:0,consume_magic:0,cd:10,effect_name:'CallPet',explain:'召唤一只骷髅为你战斗。',arms_limit:'stick',pet_config:{name:'骷髅',blood:100,magic:100,blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:0,physics_defense:50,magic_defense:20,life_time:100,cd_time:1}},
-        {name:'化魂符',blood:0,magic:0,consume_magic:0,cd:10,effect_name:'CallPet',explain:'召唤一只麒麟为你战斗。',arms_limit:'stick',pet_config:{name:'麒麟',blood:100,magic:100,blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:0,physics_defense:50,magic_defense:20,life_time:100,cd_time:1}},
-        {name:'飞仙符',blood:0,magic:0,consume_magic:0,cd:10,effect_name:'CallPet',explain:'召唤一只哮天犬为你战斗。',arms_limit:'stick',pet_config:{name:'哮天犬',blood:100,magic:100,blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:0,physics_defense:50,magic_defense:20,life_time:100,cd_time:1}},
+        {name:'化魂符',blood:0,magic:0,consume_magic:0,cd:10,effect_name:'CallPet',explain:'召唤一只麒麟为你战斗。',arms_limit:'stick',pet_config:{name:'麒麟',blood:100,magic:100,blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:0,physics_defense:50,magic_defense:20,life_time:500,cd_time:1}},
+        {name:'飞仙符',blood:0,magic:0,consume_magic:0,cd:10,effect_name:'CallPet',explain:'召唤一只哮天犬为你战斗。',arms_limit:'stick',pet_config:{name:'哮天犬',blood:100,magic:100,blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:0,physics_defense:50,magic_defense:20,life_time:1000,cd_time:1}},
     ]
 
     constructor() {
