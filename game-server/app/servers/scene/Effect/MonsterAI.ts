@@ -39,6 +39,7 @@ export class MonsterAI implements Effect {
     run(): void {
         if (this._stop_time > Date.now()) return;/// CD 暂停时间
         let pet:Pet = this._target;
+        if (pet.is_die) return;
         let player:Player = pet.get_player();
         let scene:MainScene = player.get_scene();
         if (this._create_time + this._life_time < Date.now()) {///超过存活期
