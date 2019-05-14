@@ -88,6 +88,7 @@ export abstract class Actor extends Target {
             this._blood = 0;
             this.is_die = true;
             this._die_time = Date.now();
+            this.notice_all_player("onDie",this.get_info());
         } 
         else this._blood = value;
     }
