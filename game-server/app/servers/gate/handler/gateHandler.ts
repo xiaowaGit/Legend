@@ -35,7 +35,7 @@ export class GateHandler {
         let res = dispatch(uid, connectors);
         return {
             code: 200,
-            host: res.host,
+            host: res.clientHost,
             port: res.clientPort
         };
     }
