@@ -4,6 +4,7 @@ import { FrontendSession } from 'pinus';
 import { Point } from '../base/Point';
 import { MainScene } from '../drive/MainScene';
 import { sleep } from '../../../util/tool';
+import { get_map_width, get_map_height } from '../../../util/mapData';
 
 export default function(app: Application) {
     return new SceneHandler(app);
@@ -116,8 +117,8 @@ export class SceneHandler {
     ///////////////拾取物品
     async pickup(body:{pot:Point}, session: BackendSession) {
         body['active'] = session.uid; //设置主动对象
-        if (body.pot.x < 0 || body.pot.x >= 500 ||
-            body.pot.y < 0 || body.pot.y >= 500 ) {
+        if (body.pot.x < 0 || body.pot.x >= get_map_width() ||
+            body.pot.y < 0 || body.pot.y >= get_map_height() ) {
             return {error : "拾取位置超出范围！"};
         }else{
             let msg = {handler:'handler_pickup', body:body};

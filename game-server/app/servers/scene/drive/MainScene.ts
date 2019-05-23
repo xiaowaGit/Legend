@@ -13,6 +13,7 @@ import { ResConfig } from "../../../util/resConfig";
 import { get_l } from "../../../util/tool";
 import A_star_pathfinder from "../../../util/pathFinding";
 import { EffectConfig } from "../base/Effect";
+import { get_map, get_map_width, get_map_height } from "../../../util/mapData";
 
 export interface PTerm {//项
     player:PActor;
@@ -50,17 +51,20 @@ export class MainScene extends Target {
         super();
         this.name = "绝地求生";
         this._tick_timer = setInterval(this.tick.bind(this),1000/60); // 游戏世界刷新时间为1/60秒每帧
-        for (let i = 0; i < 500; i++) {
+        let map_data:number[][] = get_map();
+        for (let i = 0; i < map_data[0].length; i++) {
             this.grid_map[i] = [];
             this.term_map[i] = [];
-            for (let j = 0; j < 500; j++) {
-                this.grid_map[i][j] = 1;
+            for (let j = 0; j < map_data.length; j++) {
+                map_data[j][i] = map_data[j][i] == 1? 0 : 1;
+                this.grid_map[i][j] = map_data[j][i];
                 this.term_map[i][j] = {player:null,res:null};
             }
         }
         let pathFind = new A_star_pathfinder();
         this.pathFind = pathFind;
-        this.pathFind.init(this.grid_map);
+        // this.pathFind.init(this.grid_map);
+        this.pathFind.init(map_data);
     }
 
     public push_message(msg:Message):void {
@@ -89,8 +93,8 @@ export class MainScene extends Target {
         rnd = Math.ceil(Math.random() * rnd);
         if (sum < 50 && rnd > 10 && Math.random() > 0.8) {
             let res:Res = ResConfig.get_random_res();
-            let x:number = Math.floor(Math.random() * 500);
-            let y:number = Math.floor(Math.random() * 500);
+            let x:number = Math.floor(Math.random() * get_map_width());
+            let y:number = Math.floor(Math.random() * get_map_height());
             let pot:Point = {x:x,y:y};
             this.res_move_to(pot,res);
             this.notice_all_player('onCreateRes',{name:res.name,point:pot,index:res.index});
@@ -98,7 +102,7 @@ export class MainScene extends Target {
     }
     ///////放置物品到指定位置
     private res_move_to(pot:Point,res:Res):void {
-        if (pot.x < 0 || pot.x >= 500 || pot.y < 0 || pot.y >= 500) return;
+        if (pot.x < 0 || pot.x >= get_map_width() || pot.y < 0 || pot.y >= get_map_height()) return;
         let pres:PRes = {res:res,prev:null,next:null};
         let term:PTerm = this.term_map[pot.x][pot.y];
         if(term.res)term.res.prev = pres;
@@ -109,8 +113,8 @@ export class MainScene extends Target {
     ///////统计地图物品的数量
     private total_res_sum():number {
         let sum:number = 0;
-        for (let i = 0; i < 500; i++) {
-            for (let j = 0; j < 500; j++) {
+        for (let i = 0; i < get_map_width(); i++) {
+            for (let j = 0; j < get_map_height(); j++) {
                 let term:PTerm = this.term_map[i][j];
                 let pres:PRes = term.res;
                 while(pres) {
@@ -131,8 +135,7 @@ export class MainScene extends Target {
     }
     ///进入游戏世界
     public enter_game(user_name:string):{} {
-        let player:Player = new Player(user_name,this.grid_map[0].length,
-            this.grid_map.length,this);
+        let player:Player = new Player(user_name,get_map_width(),get_map_height(),this);
         this.add_actor(player);
         let self = this;
         function get_other_players() {
@@ -144,8 +147,8 @@ export class MainScene extends Target {
         }
         function get_all_ress() {
             let ress = [];
-            for (let i = 0; i < 500; i++) {
-                for (let j = 0; j < 500; j++) {
+            for (let i = 0; i < get_map_width(); i++) {
+                for (let j = 0; j < get_map_height(); j++) {
                     let term:PTerm = self.term_map[i][j];
                     let pres:PRes = term.res;
                     while(pres) {
