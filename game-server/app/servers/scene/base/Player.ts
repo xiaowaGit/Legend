@@ -30,7 +30,7 @@ export class Player extends Actor {
         let pactor:PActor = {prev:null,next:null,player:null};
         super(name,map_w,map_h,scene,pactor);
         pactor.player = this;
-        this.move_to(this.point);
+        this.move_to(this.point,false);
         this.arms = null;
         this.helmet = null;
         this.clothes = null;

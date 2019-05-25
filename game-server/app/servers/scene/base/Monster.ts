@@ -1,43 +1,29 @@
 import { Actor } from "./Actor";
-import { Player } from "./Player";
 import { PActor } from "./PActor";
 import { Point } from "./Point";
 import { get_l } from "../../../util/tool";
+import { PetConfig } from "./Pet";
+import { MainScene } from "../drive/MainScene";
 import { get_map_width, get_map_height } from "../../../util/mapData";
 
-
-export interface PetConfig {
-    name:string;
-    blood:number;//气血量
-    magic:number;//魔法量
-    blood_limit:number;//气血上限
-    magic_limit:number;//魔法上限
-    physics_attack:number;//物理攻击
-    magic_attack:number;//魔法攻击
-    physics_defense:number;//物理防御
-    magic_defense:number;//魔法防御
-    life_time:number;//存活秒数
-    cd_time:number;//攻击CD时间
-}
 /*
-    宠物类
+    怪物类
 */
-export class Pet extends Actor {
+export class Monster extends Actor {
+
+    private static MONSTER_INDEX:number = 1;
 
     private _config:PetConfig;
-    private _player:Player;
     private _attack_target:Actor;
 
-    constructor(config:PetConfig,player:Player) {
+    constructor(config:PetConfig,scene:MainScene) {
         let pactor:PActor = {prev:null,next:null,player:null};
-        let player_name:string = player.name;
-        let name:string = player_name+"的"+config.name;
-        super(name,get_map_width(),get_map_height(),player.get_scene(),pactor);
+        let name:string = config.name+'('+Monster.MONSTER_INDEX+')';
+        Monster.MONSTER_INDEX ++;
+        super(name,get_map_width(),get_map_height(),scene,pactor);
         pactor.player = this;
-        this.point = player.point;
         this.move_to(this.point,false);
         this._config = config;
-        this._player = player;
         ////属性初始化
         this.blood_limit = config.blood_limit;
         this.magic_limit = config.magic_limit;
@@ -78,20 +64,11 @@ export class Pet extends Actor {
     public get_attack_target():Actor {
         return this._attack_target;
     }
-    /////获得宠物的主人
-    public get_player():Player {
-        return this._player;
-    }
     /////获得和目标的距离
     public get_target_l():number {
         if (!this._attack_target) return null;
         let target_point:Point = this._attack_target.point;
         return get_l(this.point,target_point);
-    }
-    /////获得和主人的距离
-    public get_player_l():number {
-        let player_point:Point = this._player.point;
-        return get_l(this.point,player_point);
     }
     ////向地图的所有玩家推送消息
     public notice_all_player(onType:string,body:Object):void {
