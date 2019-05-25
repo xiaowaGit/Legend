@@ -33,16 +33,16 @@ export abstract class Actor extends Target {
         this.name = name;
         this.blood = 1000;
         this.magic = 1000;
+        this._scene = scene;
+        this._pactor = pactor;
+        this.point = this.random_pot(map_w,map_h);//人物初始化在随机位置
         this.point.x = Math.floor(this.point.x);
         this.point.y = Math.floor(this.point.y);
-        this._scene = scene;
-        this.point = this.random_pot(map_w,map_h);//人物初始化在随机位置
-        this._pactor = pactor;
     }
 
     private random_pot(map_w:number,map_h:number):Point {
         while(true) {
-            let pot:Point = {x : map_w * Math.random(),y : map_h * Math.random() };
+            let pot:Point = {x : Math.floor(map_w * Math.random()),y : Math.floor(map_h * Math.random()) };
             if (this._scene.grid_map[pot.x][pot.y] == 1) return pot;
         }
     }
