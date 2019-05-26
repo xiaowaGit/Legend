@@ -230,7 +230,12 @@ let map:number[][] = [
  * 地图数据
  */
 export function get_map() {
-    return map;
+    let new_map = [];
+    for (let index = map.length-1; index >= 0; index--) {
+        const element = map[index];
+        new_map.push(element);
+    }
+    return new_map;
 }
 
 /**
