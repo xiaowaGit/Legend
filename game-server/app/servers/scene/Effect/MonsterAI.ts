@@ -49,7 +49,7 @@ export class MonsterAI implements Effect {
             if (pet.is_die) return;
             let player_l:number = pet.get_player_l();
             let attack_target:Actor = pet.get_attack_target();
-            if (attack_target && player_l < 15) {
+            if (attack_target && player_l < 15 && attack_target != pet) {
                 if (attack_target.is_die) {
                     pet.set_attack_target(null);
                     return;
