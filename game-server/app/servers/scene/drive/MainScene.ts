@@ -14,6 +14,8 @@ import { get_l } from "../../../util/tool";
 import A_star_pathfinder from "../../../util/pathFinding";
 import { EffectConfig } from "../base/Effect";
 import { get_map, get_map_width, get_map_height } from "../../../util/mapData";
+import { Monster } from "../base/Monster";
+import { MonsterActiveAI } from "../Effect/MonsterActiveAI";
 
 export interface PTerm {//项
     player:PActor;
@@ -44,6 +46,7 @@ export class MainScene extends Target {
     public term_map:PTerm[][] = [];
     public pathFind: A_star_pathfinder;
     private _tick_timer:NodeJS.Timer = null;
+    private _tick_index:number = 0; // 滴答计数
     private _channelService: ChannelService;
     private _channel: Channel;
 
@@ -72,9 +75,11 @@ export class MainScene extends Target {
     }
 
     private tick():void {
+        this._tick_index ++;
         this.handler_message();
         this.execute_effect();
         this.manager_res();
+        this.manager_monster();
     }
     private handler_message():void {////处理客户端消息（每帧处理）
         while(this._message_stack.length > 0) {
@@ -87,6 +92,7 @@ export class MainScene extends Target {
         }
     }
     private manager_res():void {////管理地图资源，生成和销毁吃鸡装备
+        if (this._tick_index % 60*3 != 0) return;
         let sum:number = this.total_res_sum();
         let rnd = 50 - Math.ceil(Math.random() * sum);
         rnd = Math.ceil(Math.random() * rnd);
@@ -123,6 +129,32 @@ export class MainScene extends Target {
                 }
             }
         }
+        return sum;
+    }
+
+    private manager_monster():void {////管理地图资源，生成和销毁野怪
+        if (this._tick_index % 60*60 != 0) return;
+        let sum:number = this.total_monster_sum();
+        let rnd = 20 - Math.ceil(Math.random() * sum);
+        rnd = Math.ceil(Math.random() * rnd);
+        rnd = Math.ceil(Math.random() * rnd);
+        if (sum < 20 && rnd > 10 && Math.random() > 0.9) {
+            let monster:Monster = new Monster(ResConfig.get_random_monster(),this);
+            let ai:MonsterActiveAI = new MonsterActiveAI(monster);
+            monster.pushEffect(ai);
+            this.add_actor(monster);
+            this.notice_all_player("onCreate",monster.get_info());
+        }
+    }
+
+    /**
+     * 统计地图上的怪物数量
+     */
+    private total_monster_sum():number {
+        let sum = 0;
+        this._actors.forEach(element => {///所有角色的效果
+            if (element.get_config_name() != '人') sum ++;
+        });
         return sum;
     }
 

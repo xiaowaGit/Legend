@@ -7,6 +7,7 @@ import { ShoesConfig, Shoes } from "../servers/scene/Res/Shoes";
 import { DrugConfig, Drug } from "../servers/scene/Res/Drug";
 import { SkillBookConfig, SkillBook } from "../servers/scene/Res/SkillBook";
 import { Res } from "../servers/scene/Res/Res";
+import { PetConfig } from "../servers/scene/base/Pet";
 
 export class ResConfig {
 
@@ -144,7 +145,21 @@ export class ResConfig {
         {name:'飞仙符',blood:0,magic:0,consume_magic:0,cd:10,effect_name:'CallPet',explain:'召唤一只哮天犬为你战斗。',arms_limit:'stick',pet_config:{name:'哮天犬',blood:100,magic:100,blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:0,physics_defense:50,magic_defense:20,life_time:1000,cd_time:1}},
     ]
 
+    public static monster_list:PetConfig[] = [//////////// 怪物
+        {name:'骷髅',blood:100,magic:100,blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:0,physics_defense:50,magic_defense:20,life_time:100,cd_time:1},
+        {name:'麒麟',blood:100,magic:100,blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:0,physics_defense:50,magic_defense:20,life_time:500,cd_time:1},
+        {name:'哮天犬',blood:100,magic:100,blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:0,physics_defense:50,magic_defense:20,life_time:1000,cd_time:1},
+    ]
+
     constructor() {
+    }
+
+    /////////////随机获得一个怪物配置
+    public static get_random_monster():PetConfig {
+        let monster_list:PetConfig[] = ResConfig.monster_list;
+        let rnd = Math.floor(Math.random() * monster_list.length);
+        let monster_config:PetConfig = monster_list[rnd];
+        return monster_config;
     }
 
     ////////////获得一个随机物品（生成随机物品）

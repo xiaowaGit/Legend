@@ -7,6 +7,7 @@ import { Move } from "./Move";
 import a_star_pathfind from "../../../util/pathFinding";
 import { Point } from "../base/Point";
 import { Monster } from "../base/Monster";
+import { get_l } from "../../../util/tool";
 
 /*
     怪物AI
@@ -70,7 +71,20 @@ export class MonsterActiveAI implements Effect {
                 pet.set_attack_target(null);
                 /// 搜索区域 并 设置攻击目标
                 this._stop_time = Date.now() + this._cd_time;
-                
+                let targets:Actor[] = scene.getTarget();
+                let pet_pot:Point = pet.point;
+                let c_l:number,c_target:Actor;
+                targets.forEach(actor => {
+                    let ac_pot:Point = actor.point;
+                    let l:number = get_l(pet_pot,ac_pot);
+                    if (l < 15) {
+                        if (c_target == null || c_l > l) {
+                            c_target = actor;
+                            c_l = l;
+                        }
+                    }
+                });
+                if (c_target) pet.set_attack_target(c_target);
             }
         }
     }
