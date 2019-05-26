@@ -17,10 +17,13 @@ export class Cure implements Effect {
 
     private _gap_time:number = null;
     private _gap_tick:number = 3;////每3秒 恢复一次气血 法力
+    private continue_time: number = 1;
 
     constructor(config:EffectConfig,target:Actor) {
         this._config = config;
         this._target = target;
+        this.continue_time = this._config.continue_time * 1000;
+        this._gap_tick *= 1000;
     }
 
     getName(): string {
@@ -34,7 +37,7 @@ export class Cure implements Effect {
     }
     run(): void {
         if (this._is_end) { return ;}
-        if (this._creator_time + this._config.continue_time < Date.now()) {
+        if (this._creator_time + this.continue_time < Date.now()) {
             this._is_end = true;
             this._is_run = false;
             return;
@@ -46,13 +49,15 @@ export class Cure implements Effect {
             this._target.notice_all_player('onCure',{active:this._target.name});
         }else{
             if (Date.now() - this._gap_time > this._gap_tick) {
-                this._target.blood += this._config.add_continue_blood || 0;
-                this._target.magic += this._config.add_continue_magic || 0;
+                let add_blood:number = this._config.add_continue_blood || 0;
+                let add_magic:number = this._config.add_continue_magic || 0;
+                this._target.blood += add_blood;
+                this._target.magic += add_magic;
                 this._gap_time = Date.now();
                 this._target.notice_all_player('onCure_Add',{
                     active:this._target.name,
-                    blood:this._target.blood,
-                    magic:this._target.magic,});
+                    blood:add_blood,
+                    magic:add_magic,});
             }
         }
     }
