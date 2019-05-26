@@ -135,10 +135,10 @@ export class MainScene extends Target {
     private manager_monster():void {////管理地图资源，生成和销毁野怪
         if (this._tick_index % 60*60 != 0) return;
         let sum:number = this.total_monster_sum();
-        let rnd = 20 - Math.ceil(Math.random() * sum);
+        let rnd = 50 - Math.ceil(Math.random() * sum);
         rnd = Math.ceil(Math.random() * rnd);
         rnd = Math.ceil(Math.random() * rnd);
-        if (sum < 20 && rnd > 10 && Math.random() > 0.9) {
+        if (sum < 50 && rnd > 10 && Math.random() > 0.9) {
             let monster:Monster = new Monster(ResConfig.get_random_monster(),this);
             let ai:MonsterActiveAI = new MonsterActiveAI(monster);
             monster.pushEffect(ai);
