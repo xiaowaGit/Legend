@@ -265,6 +265,8 @@ export class MainScene extends Target {
 
     private handler_move_to(body:{pot:Point,target:string}):void {
         let player:Player = this._actors_dic[body.target];
+        let w = get_map_width(),h = get_map_height();
+        if (body.pot.x < 0 || body.pot.x >= w || body.pot.y < 0 || body.pot.y >= h) return;
         if (player && !player.is_die) {
             player.killEffectByName('Move');
             let is_over:boolean = true;
