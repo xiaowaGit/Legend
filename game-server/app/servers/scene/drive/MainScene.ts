@@ -301,6 +301,7 @@ export class MainScene extends Target {
         let target:Actor = this._actors_dic[body.target];
         if (active && !active.is_die) {
             let res:Res = active.get_res_by_index(body.res_index);
+            if (!res) return;
             if (res.type != 'skill_book') return;
             let book:SkillBook = <SkillBook>res;
             let skill_config:SkillBookConfig = <SkillBookConfig>book.get_config();
