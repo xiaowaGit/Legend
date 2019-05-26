@@ -345,4 +345,16 @@ export class MainScene extends Target {
             if(e_res)active.dis_package_index(body.o_index,e_res);
         }
     }
+
+    private handler_discard(body:{index:number,active:string}):void {
+        let active:Player = this._actors_dic[body.active];
+        if (active && !active.is_die) {
+            let res:Res = active.out_package_index(body.index);
+            if (res) {
+                let pot:Point = active.point;
+                this.res_move_to(pot,res);
+                this.notice_all_player('onCreateRes',{name:res.name,point:pot,index:res.index});
+            }
+        }
+    }
 }

@@ -126,4 +126,12 @@ export class SceneHandler {
             return {ok : 200};
         }
     }
+
+    ///////////////丢弃物品
+    async discard(body:{index:number}, session: BackendSession) {
+        body['active'] = session.uid; //设置主动对象
+        let msg = {handler:'handler_discard', body:body};
+        MainScene.getInstance().push_message(msg);
+        return {ok : 200};
+    }
 }
