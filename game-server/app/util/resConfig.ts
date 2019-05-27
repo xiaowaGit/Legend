@@ -146,9 +146,12 @@ export class ResConfig {
     ]
 
     public static monster_list:PetConfig[] = [//////////// 怪物
-        {name:'骷髅',blood:100,magic:100,blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:0,physics_defense:50,magic_defense:20,life_time:100,cd_time:1},
-        {name:'麒麟',blood:100,magic:100,blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:0,physics_defense:50,magic_defense:20,life_time:500,cd_time:1},
-        {name:'哮天犬',blood:100,magic:100,blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:0,physics_defense:50,magic_defense:20,life_time:1000,cd_time:1},
+        {name:'抓猫',blood:100,magic:100,blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:0,physics_defense:50,magic_defense:20,life_time:100,cd_time:1},
+        {name:'鸡',blood:200,magic:200,blood_limit:200,magic_limit:200,physics_attack:200,magic_attack:0,physics_defense:50,magic_defense:20,life_time:500,cd_time:1},
+        {name:'稻草人',blood:300,magic:300,blood_limit:300,magic_limit:300,physics_attack:300,magic_attack:0,physics_defense:50,magic_defense:20,life_time:500,cd_time:1},
+        {name:'钉耙猫',blood:400,magic:400,blood_limit:400,magic_limit:400,physics_attack:400,magic_attack:0,physics_defense:50,magic_defense:20,life_time:500,cd_time:1},
+        {name:'绿野人',blood:500,magic:500,blood_limit:500,magic_limit:500,physics_attack:500,magic_attack:0,physics_defense:50,magic_defense:20,life_time:500,cd_time:1},
+        {name:'刀骷髅',blood:600,magic:600,blood_limit:600,magic_limit:600,physics_attack:600,magic_attack:0,physics_defense:50,magic_defense:20,life_time:500,cd_time:1},
     ]
 
     constructor() {
@@ -163,7 +166,7 @@ export class ResConfig {
     }
 
     ////////////获得一个随机物品（生成随机物品）
-    public static get_random_res(rnd_dec:number = 3):Res {
+    public static get_random_res(rnd_dec:number = 0):Res {
         let rnd:number = Math.ceil(Math.random()*10);
         // rnd = 10;
         if (rnd == 1) {
