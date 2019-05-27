@@ -44,10 +44,13 @@ export class Player extends Actor {
     }
     // 测试函数
     public test_fun() {
-        let books = ResConfig.skillBook_list;
-        books.forEach(element => {
-            this._ress.push(new SkillBook(element));
-        });
+        let book1 = ResConfig.skillBook_list[0];
+        this._ress.push(new SkillBook(book1));
+        let book2 = ResConfig.skillBook_list[3];
+        this._ress.push(new SkillBook(book2));
+        let book3 = ResConfig.skillBook_list[6];
+        this._ress.push(new SkillBook(book3));
+
         let arms1 = ResConfig.arms_knife_list[0];
         this._ress.push(new Arms(arms1));
         let arms2 = ResConfig.arms_staff_list[0];
