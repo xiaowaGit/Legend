@@ -8,6 +8,8 @@ import a_star_pathfind from "../../../util/pathFinding";
 import { Point } from "../base/Point";
 import { Monster } from "../base/Monster";
 import { get_l } from "../../../util/tool";
+import { Res } from "../Res/Res";
+import { ResConfig } from "../../../util/resConfig";
 
 /*
     怪物AI
@@ -20,6 +22,7 @@ export class MonsterActiveAI implements Effect {
     private _create_time:number = Date.now();
     private _stop_time:number = Date.now();
     private _cd_time:number = null;///攻击间隔X秒一次
+    private _ex_discard:boolean = false; /// 是否 执行了掉落
 
     constructor(active:Monster) {
         this._target = active;
@@ -44,7 +47,17 @@ export class MonsterActiveAI implements Effect {
             scene.remove_actor(pet);
             pet.notice_all_player("onDelete",pet.get_info());
         }else{
-            if (pet.is_die) return;
+            if (pet.is_die) {
+                if (this._ex_discard == false) {
+                    this._ex_discard = true;
+                    ////////// 掉落物品
+                    let res:Res = ResConfig.get_random_res(1);
+                    let pot:Point = pet.point;
+                    scene.res_move_to(pot,res);
+                    pet.notice_all_player('onCreateRes',{name:res.name,point:pot,index:res.index});
+                }
+                return;
+            }
             let target_l:number = pet.get_target_l();
             let attack_target:Actor = pet.get_attack_target();
             if (attack_target && target_l < 15) {

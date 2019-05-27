@@ -44,91 +44,91 @@ export class ResConfig {
     ]
 
     public static  clothes_list:ClothesConfig[] = [ ///////衣服
-        {name:'守护之铠',blood_limit:0,magic_limit:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'镜芒铠',blood_limit:0,magic_limit:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'圣痕之铠',blood_limit:0,magic_limit:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'奇迹庇佑',blood_limit:0,magic_limit:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'龙麟铠甲',blood_limit:0,magic_limit:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'祭祀血袍',blood_limit:0,magic_limit:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'暗血冥袍',blood_limit:0,magic_limit:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'魔导之魂',blood_limit:0,magic_limit:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'和谐之舞',blood_limit:0,magic_limit:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'真理圣袍',blood_limit:0,magic_limit:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
+        {name:'守护之铠',blood_limit:100,magic_limit:100,physics_defense:300,magic_defense:100,has_physics_attack:100,has_magic_attack:0},
+        {name:'镜芒铠',blood_limit:200,magic_limit:200,physics_defense:400,magic_defense:0,has_physics_attack:200,has_magic_attack:0},
+        {name:'圣痕之铠',blood_limit:300,magic_limit:200,physics_defense:100,magic_defense:300,has_physics_attack:100,has_magic_attack:100},
+        {name:'奇迹庇佑',blood_limit:400,magic_limit:400,physics_defense:100,magic_defense:500,has_physics_attack:0,has_magic_attack:200},
+        {name:'龙麟铠甲',blood_limit:500,magic_limit:500,physics_defense:200,magic_defense:200,has_physics_attack:100,has_magic_attack:100},
+        {name:'祭祀血袍',blood_limit:600,magic_limit:600,physics_defense:900,magic_defense:0,has_physics_attack:800,has_magic_attack:0},
+        {name:'暗血冥袍',blood_limit:800,magic_limit:800,physics_defense:0,magic_defense:800,has_physics_attack:0,has_magic_attack:800},
+        {name:'魔导之魂',blood_limit:900,magic_limit:900,physics_defense:400,magic_defense:600,has_physics_attack:400,has_magic_attack:200},
+        {name:'和谐之舞',blood_limit:1000,magic_limit:1000,physics_defense:500,magic_defense:500,has_physics_attack:800,has_magic_attack:0},
+        {name:'真理圣袍',blood_limit:2000,magic_limit:2000,physics_defense:900,magic_defense:300,has_physics_attack:500,has_magic_attack:1000},
     ]
 
     public static  helmet_list:HelmetConfig[] = [//////////头盔
-        {name:'九耀御雷',blood_limit:0,magic_limit:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'冥虹镜芒',blood_limit:0,magic_limit:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'龙翼圣痕',blood_limit:0,magic_limit:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'恐惧首级',blood_limit:0,magic_limit:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'噩梦之首',blood_limit:0,magic_limit:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'魔海诱惑',blood_limit:0,magic_limit:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'银月清歌',blood_limit:0,magic_limit:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'轻羽流星',blood_limit:0,magic_limit:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'远古迷梦',blood_limit:0,magic_limit:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
+        {name:'九耀御雷',blood_limit:100,magic_limit:100,physics_defense:200,magic_defense:200,has_physics_attack:100,has_magic_attack:0},
+        {name:'冥虹镜芒',blood_limit:200,magic_limit:100,physics_defense:100,magic_defense:300,has_physics_attack:0,has_magic_attack:100},
+        {name:'龙翼圣痕',blood_limit:300,magic_limit:200,physics_defense:200,magic_defense:300,has_physics_attack:100,has_magic_attack:100},
+        {name:'恐惧首级',blood_limit:400,magic_limit:400,physics_defense:300,magic_defense:300,has_physics_attack:200,has_magic_attack:0},
+        {name:'噩梦之首',blood_limit:500,magic_limit:500,physics_defense:1000,magic_defense:0,has_physics_attack:0,has_magic_attack:1000},
+        {name:'魔海诱惑',blood_limit:600,magic_limit:600,physics_defense:400,magic_defense:500,has_physics_attack:800,has_magic_attack:0},
+        {name:'银月清歌',blood_limit:700,magic_limit:700,physics_defense:500,magic_defense:800,has_physics_attack:100,has_magic_attack:900},
+        {name:'轻羽流星',blood_limit:800,magic_limit:1000,physics_defense:400,magic_defense:1500,has_physics_attack:0,has_magic_attack:1000},
+        {name:'远古迷梦',blood_limit:2000,magic_limit:100,physics_defense:500,magic_defense:600,has_physics_attack:1500,has_magic_attack:0},
     ]
 
     public static  jewelry_list:JewelryConfig[] = [//////////首饰
-        {name:'碧血手镯',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'鹰眼手镯',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'辉煌手镯',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'庇护手镯',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'烈焰永恒',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'紫电风暴',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'迷幻魔影',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'幻蓝天霞',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'深蓝传说',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'凤翼天宇',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
+        {name:'碧血手镯',blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:100,physics_defense:100,magic_defense:100,speed:50,has_physics_attack:100,has_magic_attack:0},
+        {name:'鹰眼手镯',blood_limit:200,magic_limit:200,physics_attack:200,magic_attack:200,physics_defense:300,magic_defense:200,speed:100,has_physics_attack:0,has_magic_attack:100},
+        {name:'辉煌手镯',blood_limit:400,magic_limit:200,physics_attack:600,magic_attack:200,physics_defense:700,magic_defense:200,speed:100,has_physics_attack:0,has_magic_attack:100},
+        {name:'庇护手镯',blood_limit:400,magic_limit:700,physics_attack:600,magic_attack:600,physics_defense:400,magic_defense:400,speed:200,has_physics_attack:0,has_magic_attack:100},
+        {name:'烈焰永恒',blood_limit:600,magic_limit:700,physics_attack:600,magic_attack:600,physics_defense:600,magic_defense:600,speed:200,has_physics_attack:500,has_magic_attack:0},
+        {name:'紫电风暴',blood_limit:700,magic_limit:800,physics_attack:700,magic_attack:700,physics_defense:700,magic_defense:700,speed:200,has_physics_attack:600,has_magic_attack:0},
+        {name:'迷幻魔影',blood_limit:800,magic_limit:800,physics_attack:800,magic_attack:800,physics_defense:800,magic_defense:800,speed:200,has_physics_attack:800,has_magic_attack:0},
+        {name:'幻蓝天霞',blood_limit:900,magic_limit:900,physics_attack:900,magic_attack:900,physics_defense:900,magic_defense:900,speed:200,has_physics_attack:0,has_magic_attack:0},
+        {name:'深蓝传说',blood_limit:1000,magic_limit:1000,physics_attack:1000,magic_attack:1000,physics_defense:1000,magic_defense:1000,speed:200,has_physics_attack:0,has_magic_attack:0},
+        {name:'凤翼天宇',blood_limit:1100,magic_limit:1100,physics_attack:1100,magic_attack:1100,physics_defense:1100,magic_defense:1100,speed:200,has_physics_attack:0,has_magic_attack:0},
     ]
 
     public static  necklace_list:NecklaceConfig[] = [/////////项链
-        {name:'恶鬼',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'狂暴',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'水神',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'真理',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'赤心',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'黑月',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'辉煌',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'月石',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'火焰项链',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'帝王项链',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'永恒之链',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'凝泪微华',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'时空之轮',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'混沌之链',blood_limit:0,magic_limit:0,physics_attack:0,magic_attack:0,physics_defense:0,magic_defense:0,speed:0,has_physics_attack:0,has_magic_attack:0},
+        {name:'恶鬼',blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:100,physics_defense:100,magic_defense:100,speed:10,has_physics_attack:100,has_magic_attack:0},
+        {name:'狂暴',blood_limit:200,magic_limit:200,physics_attack:200,magic_attack:200,physics_defense:100,magic_defense:100,speed:10,has_physics_attack:100,has_magic_attack:0},
+        {name:'水神',blood_limit:300,magic_limit:300,physics_attack:300,magic_attack:300,physics_defense:300,magic_defense:300,speed:10,has_physics_attack:0,has_magic_attack:100},
+        {name:'真理',blood_limit:400,magic_limit:400,physics_attack:400,magic_attack:400,physics_defense:400,magic_defense:400,speed:10,has_physics_attack:0,has_magic_attack:100},
+        {name:'赤心',blood_limit:500,magic_limit:500,physics_attack:500,magic_attack:500,physics_defense:500,magic_defense:500,speed:10,has_physics_attack:0,has_magic_attack:100},
+        {name:'黑月',blood_limit:600,magic_limit:600,physics_attack:600,magic_attack:600,physics_defense:600,magic_defense:600,speed:10,has_physics_attack:0,has_magic_attack:100},
+        {name:'辉煌',blood_limit:1300,magic_limit:300,physics_attack:300,magic_attack:300,physics_defense:300,magic_defense:300,speed:10,has_physics_attack:0,has_magic_attack:0},
+        {name:'月石',blood_limit:2300,magic_limit:300,physics_attack:300,magic_attack:300,physics_defense:300,magic_defense:300,speed:10,has_physics_attack:0,has_magic_attack:0},
+        {name:'火焰项链',blood_limit:3300,magic_limit:300,physics_attack:300,magic_attack:300,physics_defense:300,magic_defense:300,speed:10,has_physics_attack:0,has_magic_attack:0},
+        {name:'帝王项链',blood_limit:300,magic_limit:2300,physics_attack:300,magic_attack:300,physics_defense:300,magic_defense:300,speed:10,has_physics_attack:0,has_magic_attack:0},
+        {name:'永恒之链',blood_limit:300,magic_limit:3300,physics_attack:300,magic_attack:300,physics_defense:300,magic_defense:300,speed:10,has_physics_attack:0,has_magic_attack:0},
+        {name:'凝泪微华',blood_limit:300,magic_limit:4300,physics_attack:300,magic_attack:300,physics_defense:300,magic_defense:300,speed:10,has_physics_attack:0,has_magic_attack:0},
+        {name:'时空之轮',blood_limit:2300,magic_limit:2300,physics_attack:300,magic_attack:300,physics_defense:300,magic_defense:300,speed:10,has_physics_attack:0,has_magic_attack:0},
+        {name:'混沌之链',blood_limit:3300,magic_limit:2300,physics_attack:300,magic_attack:300,physics_defense:300,magic_defense:300,speed:10,has_physics_attack:0,has_magic_attack:0},
     ]
 
     public static  shoes_list:ShoesConfig[] = [///////////鞋子
-        {name:'辉煌圣靴',blood_limit:0,magic_limit:0,speed:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'神明战靴',blood_limit:0,magic_limit:0,speed:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'寒光圣靴',blood_limit:0,magic_limit:0,speed:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'光辉奇迹',blood_limit:0,magic_limit:0,speed:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'银澜月华',blood_limit:0,magic_limit:0,speed:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'龙神御风',blood_limit:0,magic_limit:0,speed:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'虚幻圆舞',blood_limit:0,magic_limit:0,speed:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'碧波万里',blood_limit:0,magic_limit:0,speed:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'清风之拂',blood_limit:0,magic_limit:0,speed:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
-        {name:'转瞬千年',blood_limit:0,magic_limit:0,speed:0,physics_defense:0,magic_defense:0,has_physics_attack:0,has_magic_attack:0},
+        {name:'辉煌圣靴',blood_limit:100,magic_limit:100,speed:50,physics_defense:100,magic_defense:100,has_physics_attack:100,has_magic_attack:0},
+        {name:'神明战靴',blood_limit:200,magic_limit:200,speed:50,physics_defense:100,magic_defense:100,has_physics_attack:100,has_magic_attack:0},
+        {name:'寒光圣靴',blood_limit:300,magic_limit:300,speed:50,physics_defense:100,magic_defense:100,has_physics_attack:0,has_magic_attack:100},
+        {name:'光辉奇迹',blood_limit:400,magic_limit:400,speed:100,physics_defense:100,magic_defense:100,has_physics_attack:0,has_magic_attack:100},
+        {name:'银澜月华',blood_limit:500,magic_limit:500,speed:100,physics_defense:100,magic_defense:100,has_physics_attack:0,has_magic_attack:100},
+        {name:'龙神御风',blood_limit:600,magic_limit:600,speed:100,physics_defense:100,magic_defense:100,has_physics_attack:0,has_magic_attack:100},
+        {name:'虚幻圆舞',blood_limit:700,magic_limit:700,speed:100,physics_defense:100,magic_defense:100,has_physics_attack:0,has_magic_attack:0},
+        {name:'碧波万里',blood_limit:800,magic_limit:800,speed:100,physics_defense:100,magic_defense:100,has_physics_attack:0,has_magic_attack:0},
+        {name:'清风之拂',blood_limit:900,magic_limit:900,speed:100,physics_defense:100,magic_defense:100,has_physics_attack:0,has_magic_attack:0},
+        {name:'转瞬千年',blood_limit:1000,magic_limit:1000,speed:100,physics_defense:100,magic_defense:100,has_physics_attack:0,has_magic_attack:0},
     ]
 
     public static  drug_list:DrugConfig[] = [////////////药品
-        {name:'止血草',blood:0,magic:0,effect_name:'',explain:''},
-        {name:'大补丸',blood:0,magic:0,effect_name:'',explain:''},
-        {name:'黑玉断续膏',blood:0,magic:0,effect_name:'',explain:''},
-        {name:'千年灵芝',blood:0,magic:0,effect_name:'',explain:''},
-        {name:'首阳参',blood:0,magic:0,effect_name:'',explain:''},
-        {name:'百草丹',blood:0,magic:0,effect_name:'',explain:''},
-        {name:'定魂丹',blood:0,magic:0,effect_name:'',explain:''},
-        {name:'大西瓜',blood:0,magic:0,effect_name:'',explain:''},
-        {name:'万年雪霜',blood:0,magic:0,effect_name:'',explain:''},
-        {name:'千年雪霜',blood:0,magic:0,effect_name:'',explain:''},
-        {name:'包子',blood:0,magic:0,effect_name:'',explain:''},
-        {name:'大包子',blood:0,magic:0,effect_name:'',explain:''},
-        {name:'金创药',blood:0,magic:0,effect_name:'',explain:''},
-        {name:'超级金创药',blood:0,magic:0,effect_name:'',explain:''},
-        {name:'灵引咒',blood:0,magic:0,effect_name:'CallPet',explain:'召唤一只骷髅为你战斗。',pet_config:{name:'骷髅',blood:100,magic:100,blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:0,physics_defense:50,magic_defense:20,life_time:100,cd_time:1}},
-        {name:'化魂咒',blood:0,magic:0,effect_name:'CallPet',explain:'召唤一只麒麟为你战斗。',pet_config:{name:'麒麟',blood:100,magic:100,blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:0,physics_defense:50,magic_defense:20,life_time:100,cd_time:1}},
-        {name:'飞仙咒',blood:0,magic:0,effect_name:'CallPet',explain:'召唤一只哮天犬为你战斗。',pet_config:{name:'哮天犬',blood:100,magic:100,blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:0,physics_defense:50,magic_defense:20,life_time:100,cd_time:1}},
+        {name:'止血草',blood:100,magic:0,effect_name:'',explain:''},
+        {name:'大补丸',blood:200,magic:0,effect_name:'',explain:''},
+        {name:'黑玉断续膏',blood:200,magic:200,effect_name:'',explain:''},
+        {name:'千年灵芝',blood:400,magic:0,effect_name:'',explain:''},
+        {name:'首阳参',blood:500,magic:0,effect_name:'',explain:''},
+        {name:'百草丹',blood:600,magic:0,effect_name:'',explain:''},
+        {name:'定魂丹',blood:700,magic:0,effect_name:'',explain:''},
+        {name:'大西瓜',blood:800,magic:0,effect_name:'',explain:''},
+        {name:'万年雪霜',blood:1000,magic:1000,effect_name:'',explain:''},
+        {name:'千年雪霜',blood:2000,magic:2000,effect_name:'',explain:''},
+        {name:'包子',blood:3000,magic:0,effect_name:'',explain:''},
+        {name:'大包子',blood:4000,magic:0,effect_name:'',explain:''},
+        {name:'金创药',blood:5000,magic:0,effect_name:'',explain:''},
+        {name:'超级金创药',blood:6000,magic:0,effect_name:'',explain:''},
+        {name:'灵引咒',blood:0,magic:0,effect_name:'CallPet',explain:'召唤一只骷髅为你战斗。',pet_config:{name:'骷髅',blood:5000,magic:100,blood_limit:5100,magic_limit:100,physics_attack:500,magic_attack:0,physics_defense:50,magic_defense:20,life_time:1000,cd_time:1}},
+        {name:'化魂咒',blood:0,magic:0,effect_name:'CallPet',explain:'召唤一只麒麟为你战斗。',pet_config:{name:'麒麟',blood:8000,magic:100,blood_limit:8100,magic_limit:100,physics_attack:1000,magic_attack:0,physics_defense:50,magic_defense:20,life_time:1000,cd_time:1}},
+        {name:'飞仙咒',blood:0,magic:0,effect_name:'CallPet',explain:'召唤一只哮天犬为你战斗。',pet_config:{name:'哮天犬',blood:10000,magic:100,blood_limit:10000,magic_limit:100,physics_attack:1500,magic_attack:0,physics_defense:50,magic_defense:20,life_time:1000,cd_time:1}},
     ]
 
     public static  skillBook_list:SkillBookConfig[] = [////////////技能书
@@ -140,9 +140,9 @@ export class ResConfig {
         {name:'灭天火',blood:0,magic:0,consume_magic:0,cd:3,effect_name:'SkyFire',explain:'灭天火',arms_limit:'staff',effect_config:{name:'灭天火',attack_l:19,range_l:1,type:'attack'}},
         {name:'噬血术',blood:0,magic:0,consume_magic:0,cd:4,effect_name:'Hemophagy',explain:'噬血术',arms_limit:'stick',effect_config:{name:'噬血术',attack_l:19,range_l:1,type:'attack'}},
         {name:'治愈术',blood:0,magic:0,consume_magic:0,cd:4,effect_name:'Cure',explain:'治愈术',arms_limit:'stick',effect_config:{name:'治愈术',attack_l:1,range_l:1,type:'assist',continue_time:100,add_continue_blood:20,add_continue_magic:0}},
-        {name:'灵引符',blood:0,magic:0,consume_magic:0,cd:10,effect_name:'CallPet',explain:'召唤一只骷髅为你战斗。',arms_limit:'stick',pet_config:{name:'骷髅',blood:100,magic:100,blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:0,physics_defense:50,magic_defense:20,life_time:100,cd_time:1}},
-        {name:'化魂符',blood:0,magic:0,consume_magic:0,cd:10,effect_name:'CallPet',explain:'召唤一只麒麟为你战斗。',arms_limit:'stick',pet_config:{name:'麒麟',blood:100,magic:100,blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:0,physics_defense:50,magic_defense:20,life_time:500,cd_time:1}},
-        {name:'飞仙符',blood:0,magic:0,consume_magic:0,cd:10,effect_name:'CallPet',explain:'召唤一只哮天犬为你战斗。',arms_limit:'stick',pet_config:{name:'哮天犬',blood:100,magic:100,blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:0,physics_defense:50,magic_defense:20,life_time:1000,cd_time:1}},
+        {name:'灵引符',blood:0,magic:0,consume_magic:0,cd:10,effect_name:'CallPet',explain:'召唤一只骷髅为你战斗。',arms_limit:'stick',pet_config:{name:'骷髅',blood:100,magic:100,blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:0,physics_defense:50,magic_defense:20,life_time:200,cd_time:1}},
+        {name:'化魂符',blood:0,magic:0,consume_magic:0,cd:10,effect_name:'CallPet',explain:'召唤一只麒麟为你战斗。',arms_limit:'stick',pet_config:{name:'麒麟',blood:300,magic:300,blood_limit:300,magic_limit:300,physics_attack:150,magic_attack:0,physics_defense:50,magic_defense:20,life_time:200,cd_time:1}},
+        {name:'飞仙符',blood:0,magic:0,consume_magic:0,cd:10,effect_name:'CallPet',explain:'召唤一只哮天犬为你战斗。',arms_limit:'stick',pet_config:{name:'哮天犬',blood:500,magic:500,blood_limit:500,magic_limit:500,physics_attack:200,magic_attack:0,physics_defense:50,magic_defense:20,life_time:200,cd_time:1}},
     ]
 
     public static monster_list:PetConfig[] = [//////////// 怪物
@@ -163,87 +163,87 @@ export class ResConfig {
     }
 
     ////////////获得一个随机物品（生成随机物品）
-    public static get_random_res():Res {
+    public static get_random_res(rnd_dec:number = 3):Res {
         let rnd:number = Math.ceil(Math.random()*10);
         // rnd = 10;
         if (rnd == 1) {
             let arms_knife_list:ArmsConfig[] = ResConfig.arms_knife_list;
             rnd = Math.floor(Math.random() * arms_knife_list.length);
-            // rnd = Math.floor(Math.random() * (rnd + 1));
-            // rnd = Math.floor(Math.random() * (rnd + 1));
-            // rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 1)rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 2)rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 3)rnd = Math.floor(Math.random() * (rnd + 1));
             let arms_config:ArmsConfig = arms_knife_list[rnd];
             return new Arms(arms_config);
         }else if (rnd == 2) {
             let arms_staff_list:ArmsConfig[] = ResConfig.arms_staff_list;
             rnd = Math.floor(Math.random() * arms_staff_list.length);
-            // rnd = Math.floor(Math.random() * (rnd + 1));
-            // rnd = Math.floor(Math.random() * (rnd + 1));
-            // rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 1)rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 2)rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 3)rnd = Math.floor(Math.random() * (rnd + 1));
             let arms_config:ArmsConfig = arms_staff_list[rnd];
             return new Arms(arms_config);
         }else if (rnd == 3) {
             let arms_stick_list:ArmsConfig[] = ResConfig.arms_stick_list;
             rnd = Math.floor(Math.random() * arms_stick_list.length);
-            // rnd = Math.floor(Math.random() * (rnd + 1));
-            // rnd = Math.floor(Math.random() * (rnd + 1));
-            // rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 1)rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 2)rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 3)rnd = Math.floor(Math.random() * (rnd + 1));
             let arms_config:ArmsConfig = arms_stick_list[rnd];
             return new Arms(arms_config);
         }else if (rnd == 4) {
             let clothes_list:ClothesConfig[] = ResConfig.clothes_list;
             rnd = Math.floor(Math.random() * clothes_list.length);
-            // rnd = Math.floor(Math.random() * (rnd + 1));
-            // rnd = Math.floor(Math.random() * (rnd + 1));
-            // rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 1)rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 2)rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 3)rnd = Math.floor(Math.random() * (rnd + 1));
             let config:ClothesConfig = clothes_list[rnd];
             return new Clothes(config);
         }else if (rnd == 5) {
             let helmet_list:HelmetConfig[] = ResConfig.helmet_list;
             rnd = Math.floor(Math.random() * helmet_list.length);
-            // rnd = Math.floor(Math.random() * (rnd + 1));
-            // rnd = Math.floor(Math.random() * (rnd + 1));
-            // rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 1)rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 2)rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 3)rnd = Math.floor(Math.random() * (rnd + 1));
             let config:HelmetConfig = helmet_list[rnd];
             return new Helmet(config);
         }else if (rnd == 6) {
             let jewelry_list:JewelryConfig[] = ResConfig.jewelry_list;
             rnd = Math.floor(Math.random() * jewelry_list.length);
-            // rnd = Math.floor(Math.random() * (rnd + 1));
-            // rnd = Math.floor(Math.random() * (rnd + 1));
-            // rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 1)rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 2)rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 3)rnd = Math.floor(Math.random() * (rnd + 1));
             let config:JewelryConfig = jewelry_list[rnd];
             return new Jewelry(config);
         }else if (rnd == 7) {
             let necklace_list:NecklaceConfig[] = ResConfig.necklace_list;
             rnd = Math.floor(Math.random() * necklace_list.length);
-            // rnd = Math.floor(Math.random() * (rnd + 1));
-            // rnd = Math.floor(Math.random() * (rnd + 1));
-            // rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 1)rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 2)rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 3)rnd = Math.floor(Math.random() * (rnd + 1));
             let config:NecklaceConfig = necklace_list[rnd];
             return new Necklace(config);
         }else if (rnd == 8) {
             let  shoes_list:ShoesConfig[] = ResConfig.shoes_list;
             rnd = Math.floor(Math.random() * shoes_list.length);
-            // rnd = Math.floor(Math.random() * (rnd + 1));
-            // rnd = Math.floor(Math.random() * (rnd + 1));
-            // rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 1)rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 2)rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 3)rnd = Math.floor(Math.random() * (rnd + 1));
             let config:ShoesConfig = shoes_list[rnd];
             return new Shoes(config);
         }else if (rnd == 9) {
             let  drug_list:DrugConfig[] = ResConfig.drug_list;
             rnd = Math.floor(Math.random() * drug_list.length);
-            // rnd = Math.floor(Math.random() * (rnd + 1));
-            // rnd = Math.floor(Math.random() * (rnd + 1));
-            // rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 1)rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 2)rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 3)rnd = Math.floor(Math.random() * (rnd + 1));
             let config:DrugConfig = drug_list[rnd];
             return new Drug(config);
         }else if (rnd == 10) {
             let  skillBook_list:SkillBookConfig[] = ResConfig.skillBook_list;
             rnd = Math.floor(Math.random() * skillBook_list.length);
-            // rnd = Math.floor(Math.random() * (rnd + 1));
-            // rnd = Math.floor(Math.random() * (rnd + 1));
-            // rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 1)rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 2)rnd = Math.floor(Math.random() * (rnd + 1));
+            if(rnd_dec >= 3)rnd = Math.floor(Math.random() * (rnd + 1));
             let config:SkillBookConfig = skillBook_list[rnd];
             return new SkillBook(config);
         }

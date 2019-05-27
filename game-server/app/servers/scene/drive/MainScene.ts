@@ -107,7 +107,7 @@ export class MainScene extends Target {
         }
     }
     ///////放置物品到指定位置
-    private res_move_to(pot:Point,res:Res):void {
+    public res_move_to(pot:Point,res:Res):void {
         if (pot.x < 0 || pot.x >= get_map_width() || pot.y < 0 || pot.y >= get_map_height()) return;
         let pres:PRes = {res:res,prev:null,next:null};
         let term:PTerm = this.term_map[pot.x][pot.y];
