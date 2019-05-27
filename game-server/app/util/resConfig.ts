@@ -166,7 +166,7 @@ export class ResConfig {
     }
 
     ////////////获得一个随机物品（生成随机物品）
-    public static get_random_res(rnd_dec:number = 0):Res {
+    public static get_random_res(rnd_dec:number = 3):Res {
         let rnd:number = Math.ceil(Math.random()*10);
         // rnd = 10;
         if (rnd == 1) {
