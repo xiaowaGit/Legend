@@ -90,7 +90,7 @@ export class MonsterActiveAI implements Effect {
                 targets.forEach(actor => {
                     let ac_pot:Point = actor.point;
                     let l:number = get_l(pet_pot,ac_pot);
-                    if (l < 15 && actor != pet) {
+                    if (l < 15 && actor != pet && !actor.is_die) {
                         if (c_target == null || c_l > l) {
                             c_target = actor;
                             c_l = l;
