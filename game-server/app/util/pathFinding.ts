@@ -26,9 +26,9 @@ export default class a_star_pathfind {
      * 启发函数
      */
     private heuristicFunc: (x0: number, y0: number, x1: number, y1: number) => number = function (x0, y0, x1, y1) {
-        // return Math.abs(x0 - x1) + Math.abs(y0 - y1);
+        return Math.abs(x0 - x1) + Math.abs(y0 - y1);
         //////////////xiaowa
-        return Math.sqrt((x0 - x1)*(x0 - x1) + (y0 - y1)*(y0 - y1));
+        // return Math.sqrt((x0 - x1)*(x0 - x1) + (y0 - y1)*(y0 - y1));
     }
 
     /**
