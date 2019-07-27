@@ -157,15 +157,15 @@ export class ResConfig {
         {name:'精英鸡',blood:700,magic:700,blood_limit:700,magic_limit:700,physics_attack:700,magic_attack:0,physics_defense:250,magic_defense:220,life_time:300,cd_time:1},
         {name:'精英稻草人',blood:800,magic:800,blood_limit:800,magic_limit:800,physics_attack:800,magic_attack:0,physics_defense:550,magic_defense:520,life_time:300,cd_time:1},
         {name:'精英钉耙猫',blood:900,magic:900,blood_limit:900,magic_limit:900,physics_attack:900,magic_attack:0,physics_defense:750,magic_defense:720,life_time:300,cd_time:1},
-        {name:'精英绿野人',blood:1000,magic:1000,blood_limit:1000,magic_limit:1000,physics_attack:1000,magic_attack:0,physics_defense:950,magic_defense:920,life_time:300,cd_time:1},
-        {name:'精英刀骷髅',blood:1100,magic:1100,blood_limit:1100,magic_limit:1100,physics_attack:1100,magic_attack:0,physics_defense:1150,magic_defense:1120,life_time:300,cd_time:1},
+        {name:'精英绿野人',blood:1200,magic:1200,blood_limit:1200,magic_limit:1200,physics_attack:1200,magic_attack:0,physics_defense:950,magic_defense:920,life_time:300,cd_time:1},
+        {name:'精英刀骷髅',blood:1400,magic:1400,blood_limit:1400,magic_limit:1400,physics_attack:1400,magic_attack:0,physics_defense:1150,magic_defense:1120,life_time:300,cd_time:1},
 
-        {name:'王者抓猫',blood:1200,magic:1200,blood_limit:1200,magic_limit:1200,physics_attack:1200,magic_attack:0,physics_defense:1350,magic_defense:1320,life_time:300,cd_time:1},
-        {name:'王者鸡',blood:1300,magic:1300,blood_limit:1300,magic_limit:1300,physics_attack:1300,magic_attack:0,physics_defense:1550,magic_defense:1520,life_time:300,cd_time:1},
-        {name:'王者稻草人',blood:1400,magic:1400,blood_limit:1400,magic_limit:1400,physics_attack:1400,magic_attack:0,physics_defense:1750,magic_defense:1720,life_time:300,cd_time:1},
-        {name:'王者钉耙猫',blood:1500,magic:1500,blood_limit:1500,magic_limit:1500,physics_attack:1500,magic_attack:0,physics_defense:1950,magic_defense:1920,life_time:300,cd_time:1},
-        {name:'王者绿野人',blood:1600,magic:1600,blood_limit:1600,magic_limit:1600,physics_attack:1600,magic_attack:0,physics_defense:2150,magic_defense:2120,life_time:300,cd_time:1},
-        {name:'王者刀骷髅',blood:1700,magic:1700,blood_limit:1700,magic_limit:1700,physics_attack:1700,magic_attack:0,physics_defense:2350,magic_defense:2320,life_time:300,cd_time:1},
+        {name:'王者抓猫',blood:1700,magic:1700,blood_limit:1700,magic_limit:1700,physics_attack:1700,magic_attack:0,physics_defense:1350,magic_defense:1320,life_time:300,cd_time:1},
+        {name:'王者鸡',blood:2000,magic:2000,blood_limit:2000,magic_limit:2000,physics_attack:2000,magic_attack:0,physics_defense:1550,magic_defense:1520,life_time:300,cd_time:1},
+        {name:'王者稻草人',blood:2400,magic:2400,blood_limit:2400,magic_limit:2400,physics_attack:2400,magic_attack:0,physics_defense:1750,magic_defense:1720,life_time:300,cd_time:1},
+        {name:'王者钉耙猫',blood:2500,magic:2500,blood_limit:2500,magic_limit:2500,physics_attack:2500,magic_attack:0,physics_defense:1950,magic_defense:1920,life_time:300,cd_time:1},
+        {name:'王者绿野人',blood:2600,magic:2600,blood_limit:2600,magic_limit:2600,physics_attack:2600,magic_attack:0,physics_defense:2150,magic_defense:2120,life_time:300,cd_time:1},
+        {name:'王者刀骷髅',blood:2700,magic:2700,blood_limit:2700,magic_limit:2700,physics_attack:2700,magic_attack:0,physics_defense:2350,magic_defense:2320,life_time:300,cd_time:1},
     ]
 
     constructor() {
