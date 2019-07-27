@@ -126,9 +126,9 @@ export class ResConfig {
         {name:'大包子',blood:4000,magic:4000,effect_name:'',explain:''},
         {name:'金创药',blood:5000,magic:5000,effect_name:'',explain:''},
         {name:'超级金创药',blood:6000,magic:6000,effect_name:'',explain:''},
-        {name:'灵引咒',blood:0,magic:0,effect_name:'CallPet',explain:'召唤一只骷髅为你战斗。',pet_config:{name:'骷髅',blood:5000,magic:100,blood_limit:5100,magic_limit:100,physics_attack:500,magic_attack:0,physics_defense:150,magic_defense:120,life_time:1000,cd_time:1}},
-        {name:'化魂咒',blood:0,magic:0,effect_name:'CallPet',explain:'召唤一只麒麟为你战斗。',pet_config:{name:'麒麟',blood:8000,magic:100,blood_limit:8100,magic_limit:100,physics_attack:1000,magic_attack:0,physics_defense:150,magic_defense:120,life_time:1000,cd_time:1}},
-        {name:'飞仙咒',blood:0,magic:0,effect_name:'CallPet',explain:'召唤一只哮天犬为你战斗。',pet_config:{name:'哮天犬',blood:10000,magic:100,blood_limit:10000,magic_limit:100,physics_attack:1500,magic_attack:0,physics_defense:150,magic_defense:120,life_time:1000,cd_time:1}},
+        {name:'灵引咒',blood:0,magic:0,effect_name:'CallPet',explain:'召唤一只骷髅为你战斗。',pet_config:{name:'骷髅',blood:5000,magic:100,blood_limit:5100,magic_limit:100,physics_attack:1500,magic_attack:0,physics_defense:1550,magic_defense:1520,life_time:1000,cd_time:1}},
+        {name:'化魂咒',blood:0,magic:0,effect_name:'CallPet',explain:'召唤一只麒麟为你战斗。',pet_config:{name:'麒麟',blood:8000,magic:100,blood_limit:8100,magic_limit:100,physics_attack:2000,magic_attack:0,physics_defense:2150,magic_defense:2120,life_time:1000,cd_time:1}},
+        {name:'飞仙咒',blood:0,magic:0,effect_name:'CallPet',explain:'召唤一只哮天犬为你战斗。',pet_config:{name:'哮天犬',blood:10000,magic:100,blood_limit:10000,magic_limit:100,physics_attack:2500,magic_attack:0,physics_defense:2550,magic_defense:2520,life_time:1000,cd_time:1}},
     ]
 
     public static  skillBook_list:SkillBookConfig[] = [////////////技能书
@@ -140,32 +140,32 @@ export class ResConfig {
         {name:'灭天火',blood:0,magic:0,consume_magic:50,cd:3,effect_name:'SkyFire',explain:'灭天火',arms_limit:'staff',effect_config:{name:'灭天火',attack_l:19,range_l:1,type:'attack'}},
         {name:'噬血术',blood:0,magic:0,consume_magic:10,cd:4,effect_name:'Hemophagy',explain:'噬血术',arms_limit:'stick',effect_config:{name:'噬血术',attack_l:19,range_l:1,type:'attack'}},
         {name:'治愈术',blood:0,magic:0,consume_magic:20,cd:4,effect_name:'Cure',explain:'治愈术',arms_limit:'stick',effect_config:{name:'治愈术',attack_l:1,range_l:1,type:'assist',continue_time:100,add_continue_blood:20,add_continue_magic:0}},
-        {name:'灵引符',blood:0,magic:0,consume_magic:50,cd:10,effect_name:'CallPet',explain:'召唤一只骷髅为你战斗。',arms_limit:'stick',pet_config:{name:'骷髅',blood:600,magic:600,blood_limit:600,magic_limit:600,physics_attack:300,magic_attack:0,physics_defense:150,magic_defense:120,life_time:200,cd_time:1}},
-        {name:'化魂符',blood:0,magic:0,consume_magic:100,cd:10,effect_name:'CallPet',explain:'召唤一只麒麟为你战斗。',arms_limit:'stick',pet_config:{name:'麒麟',blood:800,magic:800,blood_limit:800,magic_limit:800,physics_attack:550,magic_attack:0,physics_defense:150,magic_defense:120,life_time:200,cd_time:1}},
-        {name:'飞仙符',blood:0,magic:0,consume_magic:150,cd:10,effect_name:'CallPet',explain:'召唤一只哮天犬为你战斗。',arms_limit:'stick',pet_config:{name:'哮天犬',blood:1000,magic:1000,blood_limit:1000,magic_limit:1000,physics_attack:800,magic_attack:0,physics_defense:150,magic_defense:120,life_time:200,cd_time:1}},
+        {name:'灵引符',blood:0,magic:0,consume_magic:50,cd:10,effect_name:'CallPet',explain:'召唤一只骷髅为你战斗。',arms_limit:'stick',pet_config:{name:'骷髅',blood:600,magic:600,blood_limit:600,magic_limit:600,physics_attack:1300,magic_attack:0,physics_defense:1150,magic_defense:1120,life_time:200,cd_time:1}},
+        {name:'化魂符',blood:0,magic:0,consume_magic:100,cd:10,effect_name:'CallPet',explain:'召唤一只麒麟为你战斗。',arms_limit:'stick',pet_config:{name:'麒麟',blood:800,magic:800,blood_limit:800,magic_limit:800,physics_attack:1550,magic_attack:0,physics_defense:1550,magic_defense:1520,life_time:200,cd_time:1}},
+        {name:'飞仙符',blood:0,magic:0,consume_magic:150,cd:10,effect_name:'CallPet',explain:'召唤一只哮天犬为你战斗。',arms_limit:'stick',pet_config:{name:'哮天犬',blood:1000,magic:1000,blood_limit:1000,magic_limit:1000,physics_attack:1800,magic_attack:0,physics_defense:2150,magic_defense:2120,life_time:200,cd_time:1}},
     ]
 
     public static monster_list:PetConfig[] = [//////////// 怪物
         {name:'抓猫',blood:100,magic:100,blood_limit:100,magic_limit:100,physics_attack:100,magic_attack:0,physics_defense:50,magic_defense:20,life_time:100,cd_time:1},
-        {name:'鸡',blood:200,magic:200,blood_limit:200,magic_limit:200,physics_attack:200,magic_attack:0,physics_defense:50,magic_defense:20,life_time:500,cd_time:1},
-        {name:'稻草人',blood:300,magic:300,blood_limit:300,magic_limit:300,physics_attack:300,magic_attack:0,physics_defense:50,magic_defense:20,life_time:500,cd_time:1},
-        {name:'钉耙猫',blood:400,magic:400,blood_limit:400,magic_limit:400,physics_attack:400,magic_attack:0,physics_defense:50,magic_defense:20,life_time:500,cd_time:1},
-        {name:'绿野人',blood:500,magic:500,blood_limit:500,magic_limit:500,physics_attack:500,magic_attack:0,physics_defense:50,magic_defense:20,life_time:500,cd_time:1},
-        {name:'刀骷髅',blood:600,magic:600,blood_limit:600,magic_limit:600,physics_attack:600,magic_attack:0,physics_defense:50,magic_defense:20,life_time:500,cd_time:1},
+        {name:'鸡',blood:200,magic:200,blood_limit:200,magic_limit:200,physics_attack:200,magic_attack:0,physics_defense:60,magic_defense:30,life_time:500,cd_time:1},
+        {name:'稻草人',blood:300,magic:300,blood_limit:300,magic_limit:300,physics_attack:300,magic_attack:0,physics_defense:70,magic_defense:40,life_time:500,cd_time:1},
+        {name:'钉耙猫',blood:400,magic:400,blood_limit:400,magic_limit:400,physics_attack:400,magic_attack:0,physics_defense:80,magic_defense:50,life_time:500,cd_time:1},
+        {name:'绿野人',blood:500,magic:500,blood_limit:500,magic_limit:500,physics_attack:500,magic_attack:0,physics_defense:90,magic_defense:60,life_time:500,cd_time:1},
+        {name:'刀骷髅',blood:600,magic:600,blood_limit:600,magic_limit:600,physics_attack:600,magic_attack:0,physics_defense:100,magic_defense:70,life_time:500,cd_time:1},
 
         {name:'精英抓猫',blood:600,magic:600,blood_limit:600,magic_limit:600,physics_attack:600,magic_attack:0,physics_defense:150,magic_defense:120,life_time:300,cd_time:1},
-        {name:'精英鸡',blood:700,magic:700,blood_limit:700,magic_limit:700,physics_attack:700,magic_attack:0,physics_defense:150,magic_defense:120,life_time:300,cd_time:1},
-        {name:'精英稻草人',blood:800,magic:800,blood_limit:800,magic_limit:800,physics_attack:800,magic_attack:0,physics_defense:150,magic_defense:120,life_time:300,cd_time:1},
-        {name:'精英钉耙猫',blood:900,magic:900,blood_limit:900,magic_limit:900,physics_attack:900,magic_attack:0,physics_defense:150,magic_defense:120,life_time:300,cd_time:1},
-        {name:'精英绿野人',blood:1000,magic:1000,blood_limit:1000,magic_limit:1000,physics_attack:1000,magic_attack:0,physics_defense:150,magic_defense:120,life_time:300,cd_time:1},
-        {name:'精英刀骷髅',blood:1100,magic:1100,blood_limit:1100,magic_limit:1100,physics_attack:1100,magic_attack:0,physics_defense:150,magic_defense:120,life_time:300,cd_time:1},
+        {name:'精英鸡',blood:700,magic:700,blood_limit:700,magic_limit:700,physics_attack:700,magic_attack:0,physics_defense:250,magic_defense:220,life_time:300,cd_time:1},
+        {name:'精英稻草人',blood:800,magic:800,blood_limit:800,magic_limit:800,physics_attack:800,magic_attack:0,physics_defense:550,magic_defense:520,life_time:300,cd_time:1},
+        {name:'精英钉耙猫',blood:900,magic:900,blood_limit:900,magic_limit:900,physics_attack:900,magic_attack:0,physics_defense:750,magic_defense:720,life_time:300,cd_time:1},
+        {name:'精英绿野人',blood:1000,magic:1000,blood_limit:1000,magic_limit:1000,physics_attack:1000,magic_attack:0,physics_defense:950,magic_defense:920,life_time:300,cd_time:1},
+        {name:'精英刀骷髅',blood:1100,magic:1100,blood_limit:1100,magic_limit:1100,physics_attack:1100,magic_attack:0,physics_defense:1150,magic_defense:1120,life_time:300,cd_time:1},
 
-        {name:'王者抓猫',blood:1200,magic:1200,blood_limit:1200,magic_limit:1200,physics_attack:1200,magic_attack:0,physics_defense:150,magic_defense:120,life_time:300,cd_time:1},
-        {name:'王者鸡',blood:1300,magic:1300,blood_limit:1300,magic_limit:1300,physics_attack:1300,magic_attack:0,physics_defense:150,magic_defense:120,life_time:300,cd_time:1},
-        {name:'王者稻草人',blood:1400,magic:1400,blood_limit:1400,magic_limit:1400,physics_attack:1400,magic_attack:0,physics_defense:150,magic_defense:120,life_time:300,cd_time:1},
-        {name:'王者钉耙猫',blood:1500,magic:1500,blood_limit:1500,magic_limit:1500,physics_attack:1500,magic_attack:0,physics_defense:150,magic_defense:120,life_time:300,cd_time:1},
-        {name:'王者绿野人',blood:1600,magic:1600,blood_limit:1600,magic_limit:1600,physics_attack:1600,magic_attack:0,physics_defense:150,magic_defense:120,life_time:300,cd_time:1},
-        {name:'王者刀骷髅',blood:1700,magic:1700,blood_limit:1700,magic_limit:1700,physics_attack:1700,magic_attack:0,physics_defense:150,magic_defense:120,life_time:300,cd_time:1},
+        {name:'王者抓猫',blood:1200,magic:1200,blood_limit:1200,magic_limit:1200,physics_attack:1200,magic_attack:0,physics_defense:1350,magic_defense:1320,life_time:300,cd_time:1},
+        {name:'王者鸡',blood:1300,magic:1300,blood_limit:1300,magic_limit:1300,physics_attack:1300,magic_attack:0,physics_defense:1550,magic_defense:1520,life_time:300,cd_time:1},
+        {name:'王者稻草人',blood:1400,magic:1400,blood_limit:1400,magic_limit:1400,physics_attack:1400,magic_attack:0,physics_defense:1750,magic_defense:1720,life_time:300,cd_time:1},
+        {name:'王者钉耙猫',blood:1500,magic:1500,blood_limit:1500,magic_limit:1500,physics_attack:1500,magic_attack:0,physics_defense:1950,magic_defense:1920,life_time:300,cd_time:1},
+        {name:'王者绿野人',blood:1600,magic:1600,blood_limit:1600,magic_limit:1600,physics_attack:1600,magic_attack:0,physics_defense:2150,magic_defense:2120,life_time:300,cd_time:1},
+        {name:'王者刀骷髅',blood:1700,magic:1700,blood_limit:1700,magic_limit:1700,physics_attack:1700,magic_attack:0,physics_defense:2350,magic_defense:2320,life_time:300,cd_time:1},
     ]
 
     constructor() {
