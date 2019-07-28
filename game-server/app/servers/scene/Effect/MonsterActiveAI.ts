@@ -44,6 +44,7 @@ export class MonsterActiveAI implements Effect {
         let pet:Monster = this._target;
         let scene:MainScene = pet.get_scene();
         if (this._create_time + this._life_time < Date.now()) {///超过存活期
+            pet.is_die = true; // 如果此怪物 是 其他怪物的目标 ，那么消失时置为死亡状态，其他怪物好放弃这个目标
             scene.remove_actor(pet);
             pet.notice_all_player("onDelete",pet.get_info());
         }else{
