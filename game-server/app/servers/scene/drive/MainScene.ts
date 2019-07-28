@@ -91,9 +91,10 @@ export class MainScene extends Target {
             }
         }
     }
+
     private manager_res():void {////管理地图资源，生成和销毁吃鸡装备
         if (this._tick_index % 60*3 != 0) return;
-        let sum:number = this.total_res_sum();
+        let {sum,res_list} = this.total_res_sum();
         let rnd = 50 - Math.ceil(Math.random() * sum);
         rnd = Math.ceil(Math.random() * rnd);
         rnd = Math.ceil(Math.random() * rnd);
@@ -102,34 +103,32 @@ export class MainScene extends Target {
             let x:number = Math.floor(Math.random() * get_map_width());
             let y:number = Math.floor(Math.random() * get_map_height());
             let pot:Point = {x:x,y:y};
-            this.res_move_to(pot,res);
+            res.res_move_to(pot,this.term_map);
             this.notice_all_player('onCreateRes',{name:res.name,point:pot,index:res.index});
+        }else if (sum > 50) {
+            let rnd_idx:number = Math.floor(Math.random() * res_list.length);
+            let rnd_res:Res = res_list[rnd_idx];
+            rnd_res.res_out(this.term_map);
+            this.notice_all_player('onDeleteRes',{name:rnd_res.name,point:rnd_res.point,index:rnd_res.index});
         }
     }
-    ///////放置物品到指定位置
-    public res_move_to(pot:Point,res:Res):void {
-        if (pot.x < 0 || pot.x >= get_map_width() || pot.y < 0 || pot.y >= get_map_height()) return;
-        let pres:PRes = {res:res,prev:null,next:null};
-        let term:PTerm = this.term_map[pot.x][pot.y];
-        if(term.res)term.res.prev = pres;
-        pres.next = term.res;
-        pres.prev = null;
-        term.res = pres;
-    }
+
     ///////统计地图物品的数量
-    private total_res_sum():number {
+    private total_res_sum():{sum:number,res_list:Res[]} {
         let sum:number = 0;
+        let res_list:Res[] = [];
         for (let i = 0; i < get_map_width(); i++) {
             for (let j = 0; j < get_map_height(); j++) {
                 let term:PTerm = this.term_map[i][j];
                 let pres:PRes = term.res;
                 while(pres) {
                     sum++;
+                    res_list.push(pres.res);
                     pres = pres.next;
                 }
             }
         }
-        return sum;
+        return {sum,res_list};
     }
 
     private manager_monster():void {////管理地图资源，生成和销毁野怪
@@ -353,7 +352,8 @@ export class MainScene extends Target {
             let res:Res = active.out_package_index(body.index);
             if (res) {
                 let pot:Point = active.point;
-                this.res_move_to(pot,res);
+                // this.res_move_to(pot,res);
+                res.res_move_to(pot,this.term_map);
                 this.notice_all_player('onCreateRes',{name:res.name,point:pot,index:res.index});
             }
         }

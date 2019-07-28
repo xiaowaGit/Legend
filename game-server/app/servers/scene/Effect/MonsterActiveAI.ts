@@ -53,7 +53,8 @@ export class MonsterActiveAI implements Effect {
                     ////////// 掉落物品
                     let res:Res = ResConfig.get_random_res(1);
                     let pot:Point = pet.point;
-                    scene.res_move_to(pot,res);
+                    // scene.res_move_to(pot,res);
+                    res.res_move_to(pot,scene.term_map);
                     pet.notice_all_player('onCreateRes',{name:res.name,point:pot,index:res.index});
                 }
                 return;
