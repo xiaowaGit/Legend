@@ -14,8 +14,8 @@ export abstract class Actor extends Target {
     private _magic_limit:number = 1000;//魔法上限
     private _physics_attack: number = 100;//物理攻击
     private _magic_attack: number = 100;//魔法攻击
-    private _physics_defense: number = 50;//物理防御
-    private _magic_defense: number = 50;//魔法防御
+    private _physics_defense: number = 350;//物理防御
+    private _magic_defense: number = 350;//魔法防御
     public point:Point = null;
     private _speed:number = 500;//玩家移动速度
     public is_die:boolean = false;
