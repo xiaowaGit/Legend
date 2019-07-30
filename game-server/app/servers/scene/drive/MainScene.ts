@@ -105,7 +105,7 @@ export class MainScene extends Target {
             let pot:Point = {x:x,y:y};
             res.res_move_to(pot,this.term_map);
             this.notice_all_player('onCreateRes',{name:res.name,point:pot,index:res.index});
-        }else if (sum > 50) {
+        }else if (sum > 150) {
             let rnd_idx:number = Math.floor(Math.random() * res_list.length);
             let rnd_res:Res = res_list[rnd_idx];
             rnd_res.res_out(this.term_map);
@@ -134,10 +134,10 @@ export class MainScene extends Target {
     private manager_monster():void {////管理地图资源，生成和销毁野怪
         if (this._tick_index % 60*30 != 0) return;
         let sum:number = this.total_monster_sum();
-        let rnd = 100 - Math.ceil(Math.random() * sum);
+        let rnd = 60 - Math.ceil(Math.random() * sum);
         rnd = Math.ceil(Math.random() * rnd);
         rnd = Math.ceil(Math.random() * rnd);
-        if (sum < 100 && rnd > 10 && Math.random() > 0.6) {
+        if (sum < 60 && rnd > 10 && Math.random() > 0.8) {
             let monster:Monster = new Monster(ResConfig.get_random_monster(),this);
             let ai:MonsterActiveAI = new MonsterActiveAI(monster);
             monster.pushEffect(ai);
